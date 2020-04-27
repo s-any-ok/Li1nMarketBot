@@ -12,5 +12,6 @@ bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.onText(/\/location/, function (msg) {
     var fromId = msg.from.id;
+    
     bot.sendLocation(fromId, 50.757301, 25.353646);
   });
