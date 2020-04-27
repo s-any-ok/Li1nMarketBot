@@ -6,12 +6,11 @@ const options = {
   }
 };
 
-const url = process.env.APP_URL || 'https://li1n-bot.herokuapp.com:443';
+const url = process.env.APP_URL || 'https://li1n-market-bot.herokuapp.com:443';
 const bot = new TelegramBot(TOKEN, options);
 bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.onText(/\/location/, function (msg) {
     var fromId = msg.from.id;
-    
     bot.sendLocation(fromId, 50.757301, 25.353646);
   });
