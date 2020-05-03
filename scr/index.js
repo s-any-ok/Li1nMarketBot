@@ -45,7 +45,7 @@ var PUser = mongoose.model('PowerUsers', userSchema);
     });
 
 
-    johndoe.save();
+    johndoe.save(function (err) {if (err) console.log ('Error on save!')});
 
 bot.on('message', msg => {
 
