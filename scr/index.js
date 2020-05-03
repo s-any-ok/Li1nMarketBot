@@ -47,8 +47,8 @@ bot.on('message', msg => {
       break;
     case kb.home.favourite:
       break;
-    case kb.film.camedy:
-      sendFilmByQuery(chatId, {type: 'camedy'})
+    case kb.film.comedy:
+      sendFilmByQuery(chatId, {type: 'comedy'})
       break;
     case kb.film.random:
       sendFilmByQuery(chatId, {})
