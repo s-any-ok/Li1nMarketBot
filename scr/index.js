@@ -15,7 +15,7 @@ const url = process.env.APP_URL || 'https://li1n-market-bot.herokuapp.com:443';
 const bot = new TelegramBot(config.TOKEN, options);
 bot.setWebHook(`${url}/bot${config.TOKEN}`);
 
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 
 mongoose.connect(config.DB_URL, {
   useMongoClient: true,
@@ -23,10 +23,29 @@ mongoose.connect(config.DB_URL, {
    useUnifiedTopology: true
 })
 
-require('./models/film.model');
-const Film = mongoose.models('films');
+//require('./models/film.model');
+//const Film = mongoose.models('films');
 
-database.films.forEach(f => new Film(f).save());
+//database.films.forEach(f => new Film(f).save());
+
+var userSchema = new mongoose.Schema({
+  name: {
+    first: String,
+    last: { type: String, trim: true }
+  },
+  age: { type: Number, min: 0 }
+});
+
+var PUser = mongoose.model('PowerUsers', userSchema);
+
+    // Creating one user.
+    var johndoe = new PUser ({
+      name: { first: 'John', last: '  Doe   ' },
+      age: 25
+    });
+
+
+    johndoe.save();
 
 bot.on('message', msg => {
 
