@@ -9,7 +9,7 @@ const options = {
 
 const url = process.env.APP_URL || 'https://li1n-market-bot.herokuapp.com:443';
 const bot = new TelegramBot(config.TOKEN, options);
-bot.setWebHook(`${url}/bot${TOKEN}`);
+bot.setWebHook(`${url}/bot${config.TOKEN}`);
 
 bot.onText(/\/location/, function (msg) {
     var fromId = msg.from.id;
