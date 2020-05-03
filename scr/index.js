@@ -15,12 +15,26 @@ bot.setWebHook(`${url}/bot${config.TOKEN}`);
 
 bot.on('message', msg => {
 
+  const chatId = helpers.getChatId(msg);
+
   switch(msg.text){
     case kb.home.films:
+      bot.sendMessage(chatId, 'Оберіть жанр', {
+        reply_markup: {
+          keyboard: keyboard.film
+        }
+      });
       break;
     case kb.home.cinemas:
       break;
     case kb.home.favourite:
+      break;
+    case kb.back:
+      bot.sendMessage(chatId, 'Що бажаєте переглянути?', {
+        reply_markup: {
+          keyboard: keyboard.home
+        }
+      });
       break;
 
   }
@@ -29,9 +43,11 @@ bot.on('message', msg => {
 
 bot.onText(/\/start/, msg => {
 
+    const chatId = helpers.getChatId(msg);
+
     const text = `Вітаю, ${msg.from.first_name}\nВиберіть команду для початку роботи!`
 
-    bot.sendMessage(helpers.getChatId(msg), text, {
+    bot.sendMessage(chatId, text, {
       reply_markup: {
         keyboard: keyboard.home
       }
