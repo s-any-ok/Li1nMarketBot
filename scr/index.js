@@ -86,11 +86,11 @@ bot.onText(/\/start/, msg => {
 function sendFilmByQuery(chatId, query){
   Film.find(query).then(films => {
 
-    const html =  films.map((f, i) => {
+    const html = films.map((f, i) => {
       return `<b>${i + 1}</b> ${f.name} - /f${f.uuid}`
     }).join('\n');
 
-    sendMessage(chatId, html, {
+    bot.sendMessage(chatId, html, {
       parse_mode: 'HTML'
     })
 
