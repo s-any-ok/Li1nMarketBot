@@ -1,4 +1,5 @@
-const TOKEN = process.env.TELEGRAM_TOKEN || '1000060464:AAE6bwWUhoGttztN1KxjeNtyDsZuYLiB5rs';
+const config = require('./config');
+const helpers = require('./helpers');
 const TelegramBot = require('node-telegram-bot-api');
 const options = {
   webHook: {
@@ -7,7 +8,7 @@ const options = {
 };
 
 const url = process.env.APP_URL || 'https://li1n-market-bot.herokuapp.com:443';
-const bot = new TelegramBot(TOKEN, options);
+const bot = new TelegramBot(config.TOKEN, options);
 bot.setWebHook(`${url}/bot${TOKEN}`);
 
 bot.onText(/\/location/, function (msg) {
