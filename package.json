@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node ./scr/index.js"
+    "start": "node ./scr/index.js",
+    "dev": "nodemon ./scr/index.js"
   },
   "engines": {
     "node": "12.13.0"
@@ -13,5 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "node-telegram-bot-api": "^0.40.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
