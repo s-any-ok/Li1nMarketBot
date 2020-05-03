@@ -1,8 +1,10 @@
 const TelegramBot = require('node-telegram-bot-api');
+const mongoose = require('mongoose');
 const config = require('./config');
 const helpers = require('./helpers');
 const kb = require('./keyboard-button');
 const keyboard = require('./keyboard');
+const database = require('../database.json');
 const options = {
   webHook: {
     port: process.env.PORT
@@ -12,6 +14,17 @@ const options = {
 const url = process.env.APP_URL || 'https://li1n-market-bot.herokuapp.com:443';
 const bot = new TelegramBot(config.TOKEN, options);
 bot.setWebHook(`${url}/bot${config.TOKEN}`);
+
+mongoose.connect(config.DB_URL, {
+  useMongoClient: true,
+  useNewUrlParser: true,
+   useUnifiedTopology: true
+})
+
+require('./models/film.model');
+const Film = mongoose.models('films');
+
+database.films.forEach(f => new Film(f).save());
 
 bot.on('message', msg => {
 
