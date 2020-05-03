@@ -22,8 +22,6 @@ mongoose.connect(config.DB_URL, {
   useNewUrlParser: true,
    useUnifiedTopology: true
 })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err))
 
 require('./models/film.model');
 const Film = mongoose.models('films');
