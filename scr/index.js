@@ -47,6 +47,15 @@ bot.on('message', msg => {
       break;
     case kb.home.favourite:
       break;
+    case kb.film.camedy:
+      sendFilmByQuery(chatId, {type: 'camedy'})
+      break;
+    case kb.film.random:
+      sendFilmByQuery(chatId, {})
+      break;
+    case kb.film.action:
+      sendFilmByQuery(chatId, {type: 'action'})
+      break;
     case kb.back:
       bot.sendMessage(chatId, 'Що бажаєте переглянути?', {
         reply_markup: {
@@ -71,3 +80,19 @@ bot.onText(/\/start/, msg => {
       }
     });
 });
+
+// ------------------------------------
+
+function sendFilmByQuery(chatId, query){
+  Film.find(query).then(film => {
+
+    const html =  films.map((f, i) => {
+      return `<b>${i + 1}</b> ${f.name} - /f${f.uuid}`
+    }).join('\n');
+
+    sendMessage(chatId, html, {
+      parse_mode: 'HTML'
+    })
+
+  })
+}
