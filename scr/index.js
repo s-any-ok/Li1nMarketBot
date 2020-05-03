@@ -28,7 +28,7 @@ mongoose.connect(config.DB_URL, {
 require('./models/film.model');
 const Film = mongoose.model('films');
 
-database.films.forEach(f => new Film(f).save());
+//database.films.forEach(f => new Film(f).save());
 
 
 bot.on('message', msg => {
