@@ -175,7 +175,7 @@ function sendCinemasInCords(chatId, location) {
     cinemas = _.sortBy(cinemas, 'distance')
 
     const html = cinemas.map((c, i) => {
-      return `<b>${i + 1}</b> ${c.name}. <em>Відстань</em> - <strong>1000</strong> км. /c${c.uuid}`
+      return `<b>${i + 1}</b> ${c.name}. <em>Відстань</em> - <strong>${c.distance}</strong> км. /c${c.uuid}`
     }).join('\n')
 
     sendHtml(chatId, html, 'home')
