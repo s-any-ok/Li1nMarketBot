@@ -5,7 +5,7 @@ module.exports = {
     },
 
     getItemUuid(source){
-        return source.uuid;
+        return source.substr(2, source.length);
     }
 
 }
