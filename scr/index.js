@@ -45,6 +45,11 @@ bot.on('message', msg => {
       });
       break;
     case kb.home.cinemas:
+      bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
+        reply_markup: {
+          keyboard: keyboard.cinemas
+        }
+      })
       break;
     case kb.home.favourite:
       break;
