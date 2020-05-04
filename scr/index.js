@@ -74,12 +74,8 @@ bot.on('message', msg => {
 
   }
 
-  if(msg.location){
-    msg.location = {
-      "latitude": 59.843103,
-      "longitude": 30.205378
-    }
-    sendCinemasInCords(chatId, msg.location);
+  if (msg.location) {
+    sendCinemasInCords(chatId, msg.location)
   }
 
 })
