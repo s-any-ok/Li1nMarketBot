@@ -79,6 +79,40 @@ bot.onText(/\/start/, msg => {
     });
 });
 
+bot.onText(/\/f(.+)/, (msg, [source, match]) => {
+  const filmUuid = helpers.getItemUuid(source);
+  const chatId = helpers.getChatId(msg);
+
+  Film.findOne({uuid: filmUuid}).then(film => {
+    const caption = `Назва: ${film.name}\nРік: ${film.year}\nРейтинг: ${film.rate}\nТривалість: ${film.length}\nКраїна: ${film.country}`;
+    
+    bot.sendPhoto(chatId, film.picture, {
+      caption: caption,
+      reply_markup: {
+        inline_keyboard: 
+          [
+            [
+              {
+                text: 'Додати у вибрані',
+                callback_data: film.uuid
+              },
+              {
+                text: 'Показати кінотеатри',
+                callback_data: film.uuid
+              }
+            ],
+            [
+              {
+                text: `КиноПоиск ${film.name}`,
+                url: film.link
+              }
+            ]
+          ]
+      }
+    })
+  })
+})
+
 // ------------------------------------
 
 function sendFilmByQuery(chatId, query){
