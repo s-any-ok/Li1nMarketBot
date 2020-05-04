@@ -82,9 +82,9 @@ bot.on('message', msg => {
 
   }
 
-  if (msg.location) {
+  
     sendCinemasInCords(chatId, msg.location)
-  }
+  
 
 })
 
