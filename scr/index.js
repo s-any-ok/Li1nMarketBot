@@ -167,11 +167,11 @@ function sendCinemasInCords(chatId, location) {
 
   Cinema.find({}).then(cinemas => {
 
-    /*cinemas.forEach(c => {
+    cinemas.forEach(c => {
       c.distance = geolib.getDistance(location, c.location) / 1000
     })
 
-    cinemas = _.sortBy(cinemas, 'distance')*/
+    /*cinemas = _.sortBy(cinemas, 'distance')*/
 
     const html = cinemas.map((c, i) => {
       return `<b>${i + 1}</b> ${c.name}. <em>Відстань</em> - <strong>1000</strong> км. /c${c.uuid}`
