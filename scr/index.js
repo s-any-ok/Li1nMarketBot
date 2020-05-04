@@ -84,8 +84,8 @@ bot.on('message', msg => {
 
  
   msg.location = {
-    "latitude": 59.843103,
-    "longitude": 30.205378
+    latitude: 59.843103,
+    longitude: 30.205378
   }
 
   if (msg.location) {
