@@ -1,4 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
+const geolib = require('geolib');
+const _ = require('lodash')
 const mongoose = require('mongoose');
 const config = require('./config');
 const helpers = require('./helpers');
@@ -71,6 +73,10 @@ bot.on('message', msg => {
       break;
 
   }
+  
+  if(msg.location){
+    sendCinemasInCords(chatId, msg.location);
+  }
 
 })
 
@@ -130,9 +136,39 @@ function sendFilmByQuery(chatId, query){
       return `<b>${i + 1}</b> ${f.name} - /f${f.uuid}`
     }).join('\n');
 
-    bot.sendMessage(chatId, html, {
-      parse_mode: 'HTML'
+    sendHtml(chatId, html, 'films')
+
+  })
+}
+
+function sendHtml(chatId, html, keyboardName = null) {
+  const options = {
+    parse_mode: 'HTML'
+  }
+
+  if (keyboardName) {
+    options['reply_markup'] = {
+      keyboard: keyboard[keyboardName]
+    }
+  }
+
+  bot.sendMessage(chatId, html, options)
+}
+
+function sendCinemasInCords(chatId, location) {
+
+  Cinema.find({}).then(cinemas => {
+
+    cinemas.forEach(c => {
+      c.distance = geolib.getDistance(location, c.location) / 1000
     })
 
+    cinemas = _.sortBy(cinemas, 'distance')
+
+    const html = cinemas.map((c, i) => {
+      return `<b>${i + 1}</b> ${c.name}. <em>Відстань</em> - <strong>${c.distance}</strong> км. /c${c.uuid}`
+    }).join('\n')
+
+    sendHtml(chatId, html, 'home')
   })
 }
