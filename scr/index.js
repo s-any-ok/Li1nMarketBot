@@ -1,6 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const geolib = require('geolib');
-const _ = require('lodash')
+const _ = require('lodash');
 const mongoose = require('mongoose');
 const config = require('./config');
 const helpers = require('./helpers');
@@ -46,21 +46,6 @@ bot.on('message', msg => {
         }
       });
       break;
-    case kb.home.cinemas:
-      bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
-        reply_markup: {
-          keyboard: [
-            [
-              {
-                text: 'Надіслати місцезнаходження',
-                request_location: true
-              }
-            ],
-            [kb.back]
-          ]
-        }
-      })
-      break;
     case kb.home.favourite:
       break;
     case kb.film.comedy:
@@ -78,6 +63,21 @@ bot.on('message', msg => {
           keyboard: keyboard.home
         }
       });
+      break;
+      case kb.home.cinemas:
+      bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
+        reply_markup: {
+          keyboard: [
+            [
+              {
+                text: 'Надіслати місцезнаходження',
+                request_location: true
+              }
+            ],
+            [kb.back]
+          ]
+        }
+      })
       break;
 
   }
