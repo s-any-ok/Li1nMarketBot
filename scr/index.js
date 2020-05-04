@@ -49,7 +49,15 @@ bot.on('message', msg => {
     case kb.home.cinemas:
       bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
         reply_markup: {
-          keyboard: keyboard.cinemas
+          keyboard: [
+            [
+              {
+                text: 'Отправить местоположение',
+                request_location: true
+              }
+            ],
+            [kb.back]
+          ]
         }
       })
       break;
