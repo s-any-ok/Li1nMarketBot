@@ -128,6 +128,40 @@ bot.onText(/\/f(.+)/, (msg, [source, match]) => {
   })
 })
 
+bot.onText(/\/c(.+)/, (msg, [source, match]) => {
+
+  const cinemaUuid = helpers.getItemUuid(source);
+  const chatId = helpers.getChatId(msg);
+
+  Cinema.findOne({uuid: cinemaUuid}).then(cinema => {
+
+    bot.sendMessage(chatId, 'Кінотеатр', {
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: cinema.name,
+              url: cinema.link
+            },
+            {
+              text: 'Показати на карті',
+              callback_data: JSON.stringify(cinema.location)
+            }
+          ],
+          [
+            {
+              text: 'Зараз на екрані',
+              callback_data: JSON.stringify(cinema.film)
+            }
+          ]
+        ]
+      }
+    })
+
+  });
+
+})
+
 // ------------------------------------
 
 function sendFilmByQuery(chatId, query){
