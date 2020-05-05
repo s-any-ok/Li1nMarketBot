@@ -314,7 +314,7 @@ function showFavouriteFilms(chatId, telegramId) {
             html = films.map(f => {
               return `${f.name} - <b>${f.rate}</b> (/f${f.uuid})`
             }).join('\n')
-            html = `<b>Ваші фільм:</b>\n${html}`
+            html = `<b>Ваші фільми:</b>\n${html}`
           } else {
             html = 'Ви ще нічого не додали'
           }
@@ -324,5 +324,15 @@ function showFavouriteFilms(chatId, telegramId) {
       } else {
         sendHtml(chatId, 'Ви ще нічого не додали', 'home')
       }
-    }).catch(e => console.log(e))
+    })
+}
+
+function sendFilmCinemasByQuery(userId, query) {
+  Cinema.find(query).then(cinemas => {
+    const html = cinemas.map((c, i) => {
+      return `<b>${i + 1}.</b> ${c.name} - /c${c.uuid}`
+    }).join('\n')
+
+    sendHtml(userId, html, 'home')
+  })
 }
