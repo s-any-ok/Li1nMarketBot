@@ -125,7 +125,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
      User.findOne({telegramId: msg.from.id})
     ])
   .then(([product, user]) => {
-    const caption = `${product.name}\n${product.amount}\nЦіна: ${product.price}\n${product.data}`;
+    const caption = `${product.name}\n ${product.amount}\nЦіна: ${product.price}\nАкційний термін:\n${product.data}`;
     
     let isFavourite = false;
 
@@ -170,7 +170,7 @@ bot.onText(/\/s(.+)/, (msg, [source, match]) => {
 
   Shop.findOne({uuid: shopUuid}).then(shop => {
 
-    bot.sendMessage(chatId, `<strong>${shop.name}</strong>`, {
+    bot.sendMessage(chatId, `${shop.name}`, {
       reply_markup: {
         inline_keyboard: [
           [
@@ -272,7 +272,7 @@ function sendShopsInCords(chatId, location) {
   })
 }
 
-function toggleFavouriteProducts(userId, queryId, {filmUuid, isFav}) {
+function toggleFavouriteProducts(userId, queryId, {productUuid, isFav}) {
   let userPromise
 
   User.findOne({telegramId: userId})
@@ -287,7 +287,7 @@ function toggleFavouriteProducts(userId, queryId, {filmUuid, isFav}) {
     } else {
       userPromise = new User({
         telegramId: userId,
-        films: [filmUuid]
+        products: [productUuid]
       })
     }
 
