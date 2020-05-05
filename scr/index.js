@@ -141,7 +141,7 @@ bot.onText(/\/c(.+)/, (msg, [source, match]) => {
           [
             {
               text: cinema.name,
-              url: cinema.link
+              url: cinema.url
             },
             {
               text: 'Показати на карті',
