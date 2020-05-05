@@ -110,9 +110,22 @@ bot.onText(/\/f(.+)/, (msg, [source, match]) => {
   const filmUuid = helpers.getItemUuid(source);
   const chatId = helpers.getChatId(msg);
 
-  Film.findOne({uuid: filmUuid}).then(film => {
+  Promise.all([
+     Film.findOne({uuid: filmUuid}),
+     User.findOne({telegramId: msg.from.id})
+    ])
+  .then(([film, user]) => {
     const caption = `Назва: ${film.name}\nРік: ${film.year}\nРейтинг: ${film.rate}\nТривалість: ${film.length}\nКраїна: ${film.country}`;
     
+    let isFavourite = false;
+
+    if (user) {
+      isFavourite = user.films.indexOf(film.uuid) !== -1;
+    }
+
+    const favouriteText = isFavourite ? 'Видалити з обраних' : 'Додати в обрані';
+
+
     bot.sendPhoto(chatId, film.picture, {
       caption: caption,
       reply_markup: {
@@ -120,7 +133,7 @@ bot.onText(/\/f(.+)/, (msg, [source, match]) => {
           [
             [
               {
-                text: 'Додати у вибрані',
+                text: favouriteText,
                 callback_data: JSON.stringify({
                   type: ACTION_TYPE.FILM_TOGGLE_FAV,
                   filmUuid: film.uuid,
@@ -255,5 +268,36 @@ function sendCinemasInCords(chatId, location) {
     }).join('\n')
 
     sendHtml(chatId, html, 'home')
+  })
+}
+
+function toggleFavouriteFilm(userId, queryId, {filmUuid, isFav}) {
+  let userPromise
+
+  User.findOne({telegramId: userId})
+  .then(user => {
+    if (user) {
+      if (isFav) {
+        user.films = user.films.filter(fUuid => fUuid !== filmUuid)
+      } else {
+        user.films.push(filmUuid)
+      }
+      userPromise = user
+    } else {
+      userPromise = new User({
+        telegramId: userId,
+        films: [filmUuid]
+      })
+    }
+
+    const answerText = isFav ? `Видалено з обраних` : `Фільм додано до обраних`
+
+    userPromise.save()
+    .then(_ => {
+      bot.answerCallbackQuery({
+        callback_query_id: queryId,
+        text: answerText
+      })
+    })
   })
 }
