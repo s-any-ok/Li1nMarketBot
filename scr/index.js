@@ -187,7 +187,7 @@ bot.onText(/\/c(.+)/, (msg, [source, match]) => {
           ],
           [
             {
-              text: 'Зараз на екрані',
+              text: `Зараз на екрані`,
               callback_data: JSON.stringify({
                 type: ACTION_TYPE.CINEMA_FILMS,
                 filmUuids: cinema.films
@@ -220,9 +220,9 @@ bot.on('callback_query', query => {
   } else if (type === ACTION_TYPE.FILM_TOGGLE_FAV) {
     toggleFavouriteFilm(userId, query.id, data)
   } else if (type === ACTION_TYPE.CINEMA_FILMS) {
-    sendFilmsByQuery(userId, {uuid: {'$in': data.filmUuids}})
-  } else if (type === ACTION_TYPE.FILM_CINEMAS) {
     sendFilmCinemasByQuery(userId, {uuid: {'$in': data.cinemaUuids}})
+  } else if (type === ACTION_TYPE.FILM_CINEMAS) {
+    sendFilmsByQuery(userId, {uuid: {'$in': data.filmUuids}})
   }
 })
 
