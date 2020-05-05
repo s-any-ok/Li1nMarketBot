@@ -6,7 +6,9 @@ const config = require('./config');
 const helpers = require('./helpers');
 const kb = require('./keyboard-button');
 const keyboard = require('./keyboard');
+
 const database = require('../database.json');
+
 const options = {
   webHook: {
     port: process.env.PORT
@@ -24,6 +26,14 @@ mongoose.connect(config.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
+
+const ACTION_TYPE = {
+  CINEMA_FILMS: 'cfs',
+  FILM_CINEMAS: 'fcs',
+  CINEMA_LOCATION: 'cl',
+  FILM_TOGGLE_FAV: 'ftf'
+}
+
 
 require('./models/film.model');
 require('./models/cinema.model');
@@ -111,11 +121,18 @@ bot.onText(/\/f(.+)/, (msg, [source, match]) => {
             [
               {
                 text: 'Додати у вибрані',
-                callback_data: film.uuid
+                callback_data: JSON.stringify({
+                  type: ACTION_TYPE.FILM_TOGGLE_FAV,
+                  filmUuid: film.uuid,
+                  isFav: isFavourite
+                })
               },
               {
                 text: 'Показати кінотеатри',
-                callback_data: film.uuid
+                callback_data: JSON.stringify({
+                  type: ACTION_TYPE.FILM_CINEMAS,
+                  cinemaUuids: film.cinemas
+                })
               }
             ],
             [
@@ -147,13 +164,20 @@ bot.onText(/\/c(.+)/, (msg, [source, match]) => {
             },
             {
               text: 'Показати на карті',
-              callback_data: JSON.stringify(cinema.uuid)
+              callback_data: JSON.stringify({
+                type: ACTION_TYPE.CINEMA_LOCATION,
+                lat: cinema.location.latitude,
+                lon: cinema.location.longitude,
+              })
             }
           ],
           [
             {
               text: 'Зараз на екрані',
-              callback_data: JSON.stringify(cinema.films)
+              callback_data: JSON.stringify({
+                type: ACTION_TYPE.CINEMA_FILMS,
+                filmUuids: cinema.films
+              })
             }
           ]
         ]
@@ -162,6 +186,30 @@ bot.onText(/\/c(.+)/, (msg, [source, match]) => {
 
   });
 
+})
+
+bot.on('callback_query', query => {
+  const userId = query.from.id
+
+  let data
+  try {
+    data = JSON.parse(query.data)
+  } catch (e) {
+    throw new Error('Data is not a object')
+  }
+
+  const { type } = data
+
+  if (type === ACTION_TYPE.CINEMA_LOCATION) {
+    const { lat, lon } = data
+    bot.sendLocation(query.message.chat.id, lat, lon)
+  } else if (type === ACTION_TYPE.FILM_TOGGLE_FAV) {
+    toggleFavouriteFilm(userId, query.id, data)
+  } else if (type === ACTION_TYPE.CINEMA_FILMS) {
+    sendFilmsByQuery(userId, {uuid: {'$in': data.filmUuids}})
+  } else if (type === ACTION_TYPE.FILM_CINEMAS) {
+    sendFilmCinemasByQuery(userId, {uuid: {'$in': data.cinemaUuids}})
+  }
 })
 
 // ------------------------------------
