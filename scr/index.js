@@ -170,7 +170,7 @@ bot.onText(/\/s(.+)/, (msg, [source, match]) => {
 
   Shop.findOne({uuid: shopUuid}).then(shop => {
 
-    bot.sendMessage(chatId, `<b>${shop.name}</b>`, {
+    bot.sendMessage(chatId, `Магазин ${shop.name}`, {
       reply_markup: {
         inline_keyboard: [
           [
