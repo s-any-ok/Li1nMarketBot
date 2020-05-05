@@ -59,6 +59,7 @@ bot.on('message', msg => {
       });
       break;
     case kb.home.favourite:
+      showFavouriteFilms(chatId, msg.from.id)
       break;
     case kb.film.comedy:
       sendFilmByQuery(chatId, {type: 'comedy'})
@@ -300,4 +301,28 @@ function toggleFavouriteFilm(userId, queryId, {filmUuid, isFav}) {
       })
     })
   })
+}
+
+function showFavouriteFilms(chatId, telegramId) {
+  User.findOne({telegramId})
+    .then(user => {
+
+      if (user) {
+        Film.find({uuid: {'$in': user.films}}).then(films => {
+          let html
+          if (films.length) {
+            html = films.map(f => {
+              return `${f.name} - <b>${f.rate}</b> (/f${f.uuid})`
+            }).join('\n')
+            html = `<b>Ваші фільм:</b>\n${html}`
+          } else {
+            html = 'Ви ще нічого не додали'
+          }
+
+          sendHtml(chatId, html, 'home')
+        })
+      } else {
+        sendHtml(chatId, 'Ви ще нічого не додали', 'home')
+      }
+    }).catch(e => console.log(e))
 }
