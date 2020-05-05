@@ -220,15 +220,15 @@ bot.on('callback_query', query => {
   } else if (type === ACTION_TYPE.FILM_TOGGLE_FAV) {
     toggleFavouriteFilm(userId, query.id, data)
   } else if (type === ACTION_TYPE.CINEMA_FILMS) {
-    sendFilmCinemasByQuery(userId, {uuid: {'$in': data.cinemaUuids}})
-  } else if (type === ACTION_TYPE.FILM_CINEMAS) {
     sendFilmsByQuery(userId, {uuid: {'$in': data.filmUuids}})
+  } else if (type === ACTION_TYPE.FILM_CINEMAS) {
+    sendFilmCinemasByQuery(userId, {uuid: {'$in': data.cinemaUuids}})
   }
 })
 
 // ------------------------------------
 
-function sendFilmByQuery(chatId, query){
+function sendFilmsByQuery(chatId, query){
   Film.find(query).then(films => {
 
     const html = films.map((f, i) => {
