@@ -135,7 +135,7 @@ bot.onText(/\/c(.+)/, (msg, [source, match]) => {
 
   Cinema.findOne({uuid: cinemaUuid}).then(cinema => {
 
-    bot.sendMessage(chatId, 'Кінотеатр', {
+    bot.sendMessage(chatId, `Кінотеатр ${cinema.name}`, {
       reply_markup: {
         inline_keyboard: [
           [
@@ -145,13 +145,13 @@ bot.onText(/\/c(.+)/, (msg, [source, match]) => {
             },
             {
               text: 'Показати на карті',
-              callback_data: JSON.stringify(cinema.location)
+              callback_data: JSON.stringify(cinema.uuid)
             }
           ],
           [
             {
               text: 'Зараз на екрані',
-              callback_data: JSON.stringify(cinema.film)
+              callback_data: JSON.stringify(cinema.films)
             }
           ]
         ]
