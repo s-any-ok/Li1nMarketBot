@@ -125,7 +125,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
      User.findOne({telegramId: msg.from.id})
     ])
   .then(([product, user]) => {
-    const caption = `${product.name}\n${product.amount}\nЦіна: ${product.price}\n${film.length}`;
+    const caption = `${product.name}\n${product.amount}\nЦіна: ${product.price}\n${product.data}`;
     
     let isFavourite = false;
 
@@ -170,7 +170,7 @@ bot.onText(/\/s(.+)/, (msg, [source, match]) => {
 
   Shop.findOne({uuid: shopUuid}).then(shop => {
 
-    bot.sendMessage(chatId, `Кінотеатр ${shop.name}`, {
+    bot.sendMessage(chatId, `<strong>${shop.name}</strong>`, {
       reply_markup: {
         inline_keyboard: [
           [
@@ -232,7 +232,7 @@ function sendProductsByQuery(chatId, query){
   Product.find(query).then(products => {
 
     const html = products.map((p, i) => {
-      return `<b>${i + 1}</b> ${p.name} - /p${p.uuid}`
+      return `<b>${i + 1})</b> ${p.name} - /p${p.uuid}`
     }).join('\n');
 
     sendHtml(chatId, html, 'products')
