@@ -1,13 +1,16 @@
 module.exports = {
     home: {
-        films: 'Зараз в кіно',
-        favourite: 'Вибрані',
-        cinemas: 'Кінотеатри'
+        products: 'Продукти',
+        favourite: 'Кошик',
+        shops: 'Магазини'
     },
-    film: {
-        random: 'Випадковий фільм',
-        action: 'Бойовик',
-        comedy: 'Комедія'
+    product: {
+        random: 'Випадковий продукт',
+        fruit_vegetables: 'Фрукти та овочі',
+        water: 'Напої',
+        meat_fish_poultry: 'М\'ясао, риба, птиця',
+        sausage_cheese: 'Сири та м\'ясо-ковбасні вироби',
+        milk_eggs: 'Молочні продукти та яйця'
     },
     back: 'Назад',
 }

@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     type: Number,
     required: true
   },
-  films: {
+  products: {
     type: [String],
     default: []
   }

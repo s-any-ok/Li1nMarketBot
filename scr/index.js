@@ -28,19 +28,18 @@ mongoose.connect(config.DB_URL, {
 })
 
 const ACTION_TYPE = {
-  CINEMA_FILMS: 'cfs',
-  FILM_CINEMAS: 'fcs',
-  CINEMA_LOCATION: 'cl',
-  FILM_TOGGLE_FAV: 'ftf'
+  ACTION_PRODUCTS: 'ap',
+  SHOP_LOCATION: 'sl',
+  PROD_TOGGLE_FAV: 'ptf'
 }
 
 
-require('./models/film.model');
-require('./models/cinema.model');
+require('./models/product.model');
+require('./models/shop.model');
 require('./models/user.model');
 
-const Film = mongoose.model('films');
-const Cinema = mongoose.model('cinemas');
+const Product = mongoose.model('products');
+const Shop = mongoose.model('shops');
 const User = mongoose.model('users');
 
 //database.films.forEach(f => new Film(f).save());
@@ -51,25 +50,35 @@ bot.on('message', msg => {
   const chatId = helpers.getChatId(msg);
 
   switch(msg.text){
-    case kb.home.films:
-      bot.sendMessage(chatId, 'Оберіть жанр', {
+    case kb.home.products:
+      bot.sendMessage(chatId, 'Оберіть категорію товару', {
         reply_markup: {
-          keyboard: keyboard.film
+          keyboard: keyboard.product
         }
       });
       break;
     case kb.home.favourite:
-      showFavouriteFilms(chatId, msg.from.id)
+      showFavouriteProducts(chatId, msg.from.id)
       break;
-    case kb.film.comedy:
-      sendFilmByQuery(chatId, {type: 'comedy'})
+    case kb.product.fruit_vegetables:
+      sendProductsByQuery(chatId, {type: 'fruit_vegetables'})
       break;
-    case kb.film.random:
-      sendFilmByQuery(chatId, {})
+    case kb.product.milk_eggs:
+      sendProductsByQuery(chatId, {type: 'milk_eggs'})
       break;
-    case kb.film.action:
-      sendFilmByQuery(chatId, {type: 'action'})
+    case kb.product.meat_fish_poultry:
+      sendProductsByQuery(chatId, {type: 'meat_fish_poultry'})
       break;
+    case kb.product.sausage_cheese:
+      sendProductsByQuery(chatId, {type: 'sausage_cheese'})
+      break;
+    case kb.product.water:
+      sendProductsByQuery(chatId, {type: 'water'})
+      break;
+    case kb.product.random:
+      sendProductsByQuery(chatId, {})
+      break;
+    
     case kb.back:
       bot.sendMessage(chatId, 'Що бажаєте переглянути?', {
         reply_markup: {
@@ -77,10 +86,10 @@ bot.on('message', msg => {
         }
       });
       break;
-      case kb.home.cinemas:
+      case kb.home.shops:
       bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
         reply_markup: {
-          keyboard: keyboard.cinemas
+          keyboard: keyboard.shops
         }
       })
       break;
@@ -88,7 +97,7 @@ bot.on('message', msg => {
   }
 
   if (msg.location) {
-    sendCinemasInCords(chatId, msg.location)
+    sendShopsInCords(chatId, msg.location)
   }
  
 
@@ -107,27 +116,27 @@ bot.onText(/\/start/, msg => {
     });
 });
 
-bot.onText(/\/f(.+)/, (msg, [source, match]) => {
-  const filmUuid = helpers.getItemUuid(source);
+bot.onText(/\/p(.+)/, (msg, [source, match]) => {
+  const productUuid = helpers.getItemUuid(source);
   const chatId = helpers.getChatId(msg);
 
   Promise.all([
-     Film.findOne({uuid: filmUuid}),
+     Product.findOne({uuid: productUuid}),
      User.findOne({telegramId: msg.from.id})
     ])
-  .then(([film, user]) => {
-    const caption = `Назва: ${film.name}\nРік: ${film.year}\nРейтинг: ${film.rate}\nТривалість: ${film.length}\nКраїна: ${film.country}`;
+  .then(([product, user]) => {
+    const caption = `${product.name}\n${product.amount}\nЦіна: ${product.price}\n${film.length}`;
     
     let isFavourite = false;
 
     if (user) {
-      isFavourite = user.films.indexOf(film.uuid) !== -1;
+      isFavourite = user.products.indexOf(product.uuid) !== -1;
     }
 
-    const favouriteText = isFavourite ? 'Видалити з обраних' : 'Додати в обрані';
+    const favouriteText = isFavourite ? 'Видалити з кошика' : 'Додати в кошик';
 
 
-    bot.sendPhoto(chatId, film.picture, {
+    bot.sendPhoto(chatId, product.picture, {
       caption: caption,
       reply_markup: {
         inline_keyboard: 
@@ -136,23 +145,16 @@ bot.onText(/\/f(.+)/, (msg, [source, match]) => {
               {
                 text: favouriteText,
                 callback_data: JSON.stringify({
-                  type: ACTION_TYPE.FILM_TOGGLE_FAV,
-                  filmUuid: film.uuid,
+                  type: ACTION_TYPE.PROD_TOGGLE_FAV,
+                  productUuid: product.uuid,
                   isFav: isFavourite
-                })
-              },
-              {
-                text: 'Показати кінотеатри',
-                callback_data: JSON.stringify({
-                  type: ACTION_TYPE.FILM_CINEMAS,
-                  cinemaUuids: film.cinemas
                 })
               }
             ],
             [
               {
-                text: `КиноПоиск ${film.name}`,
-                url: film.link
+                text: product.shop,
+                url: product.link
               }
             ]
           ]
@@ -161,36 +163,36 @@ bot.onText(/\/f(.+)/, (msg, [source, match]) => {
   })
 })
 
-bot.onText(/\/c(.+)/, (msg, [source, match]) => {
+bot.onText(/\/s(.+)/, (msg, [source, match]) => {
 
-  const cinemaUuid = helpers.getItemUuid(source);
+  const shopUuid = helpers.getItemUuid(source);
   const chatId = helpers.getChatId(msg);
 
-  Cinema.findOne({uuid: cinemaUuid}).then(cinema => {
+  Shop.findOne({uuid: shopUuid}).then(shop => {
 
-    bot.sendMessage(chatId, `Кінотеатр ${cinema.name}`, {
+    bot.sendMessage(chatId, `Кінотеатр ${shop.name}`, {
       reply_markup: {
         inline_keyboard: [
           [
             {
-              text: cinema.name,
-              url: cinema.url
+              text: shop.name,
+              url: shop.url
             },
             {
               text: 'Показати на карті',
               callback_data: JSON.stringify({
-                type: ACTION_TYPE.CINEMA_LOCATION,
-                lat: cinema.location.latitude,
-                lon: cinema.location.longitude,
+                type: ACTION_TYPE.SHOP_LOCATION,
+                lat: shop.location.latitude,
+                lon: shop.location.longitude,
               })
             }
           ],
           [
             {
-              text: `Зараз на екрані`,
+              text: `Акційні товари`,
               callback_data: JSON.stringify({
-                type: ACTION_TYPE.CINEMA_FILMS,
-                filmUuids: cinema.films
+                type: ACTION_TYPE.ACTION_PRODUCTS,
+                productUuids: shop.products
               })
             }
           ]
@@ -214,28 +216,26 @@ bot.on('callback_query', query => {
 
   const { type } = data
 
-  if (type === ACTION_TYPE.CINEMA_LOCATION) {
+  if (type === ACTION_TYPE.SHOP_LOCATION) {
     const { lat, lon } = data
     bot.sendLocation(query.message.chat.id, lat, lon)
-  } else if (type === ACTION_TYPE.FILM_TOGGLE_FAV) {
-    toggleFavouriteFilm(userId, query.id, data)
-  } else if (type === ACTION_TYPE.CINEMA_FILMS) {
-    sendFilmsByQuery(userId, {uuid: {'$in': data.filmUuids}})
-  } else if (type === ACTION_TYPE.FILM_CINEMAS) {
-    sendFilmCinemasByQuery(userId, {uuid: {'$in': data.cinemaUuids}})
+  } else if (type === ACTION_TYPE.PROD_TOGGLE_FAV) {
+    toggleFavouriteProducts(userId, query.id, data)
+  } else if (type === ACTION_TYPE.ACTION_PRODUCTS) {
+    sendFilmsByQuery(userId, {uuid: {'$in': data.productUuids}})
   }
 })
 
 // ------------------------------------
 
-function sendFilmsByQuery(chatId, query){
-  Film.find(query).then(films => {
+function sendProductsByQuery(chatId, query){
+  Product.find(query).then(products => {
 
-    const html = films.map((f, i) => {
-      return `<b>${i + 1}</b> ${f.name} - /f${f.uuid}`
+    const html = products.map((p, i) => {
+      return `<b>${i + 1}</b> ${p.name} - /p${p.uuid}`
     }).join('\n');
 
-    sendHtml(chatId, html, 'films')
+    sendHtml(chatId, html, 'products')
 
   })
 }
@@ -254,34 +254,34 @@ function sendHtml(chatId, html, keyboardName = null) {
   bot.sendMessage(chatId, html, options)
 }
 
-function sendCinemasInCords(chatId, location) {
+function sendShopsInCords(chatId, location) {
 
-  Cinema.find({}).then(cinemas => {
+  Shop.find({}).then(shops => {
 
-    cinemas.forEach(c => {
-      c.distance = geolib.getDistance(location, c.location) / 1000
+    shops.forEach(s => {
+      s.distance = geolib.getDistance(location, s.location) / 1000
     })
 
-    cinemas = _.sortBy(cinemas, 'distance')
+    shops = _.sortBy(shops, 'distance')
 
-    const html = cinemas.map((c, i) => {
-      return `<b>${i + 1}.</b> ${c.name}. <em>Відстань</em> - <strong>${c.distance}</strong> км. /c${c.uuid}`
+    const html = shops.map((s, i) => {
+      return `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км. /s${s.uuid}`
     }).join('\n')
 
     sendHtml(chatId, html, 'home')
   })
 }
 
-function toggleFavouriteFilm(userId, queryId, {filmUuid, isFav}) {
+function toggleFavouriteProducts(userId, queryId, {filmUuid, isFav}) {
   let userPromise
 
   User.findOne({telegramId: userId})
   .then(user => {
     if (user) {
       if (isFav) {
-        user.films = user.films.filter(fUuid => fUuid !== filmUuid)
+        user.products = user.products.filter(pUuid => pUuid !== productUuid)
       } else {
-        user.films.push(filmUuid)
+        user.products.push(productUuid)
       }
       userPromise = user
     } else {
@@ -291,7 +291,7 @@ function toggleFavouriteFilm(userId, queryId, {filmUuid, isFav}) {
       })
     }
 
-    const answerText = isFav ? `Видалено з обраних` : `Фільм додано до обраних`
+    const answerText = isFav ? `Видалено з кошика` : `Продукт додано до кошика`
 
     userPromise.save()
     .then(_ => {
@@ -303,18 +303,18 @@ function toggleFavouriteFilm(userId, queryId, {filmUuid, isFav}) {
   })
 }
 
-function showFavouriteFilms(chatId, telegramId) {
+function showFavouriteProducts(chatId, telegramId) {
   User.findOne({telegramId})
     .then(user => {
 
       if (user) {
-        Film.find({uuid: {'$in': user.films}}).then(films => {
+        Product.find({uuid: {'$in': user.products}}).then(products => {
           let html
-          if (films.length) {
-            html = films.map(f => {
-              return `${f.name} - <b>${f.rate}</b> (/f${f.uuid})`
+          if (products.length) {
+            html = products.map(p => {
+              return `${p.name} - <b>${p.price}</b> (/p${p.uuid})`
             }).join('\n')
-            html = `<b>Ваші фільми:</b>\n${html}`
+            html = `<b>Ваші продукти:</b>\n${html}`
           } else {
             html = 'Ви ще нічого не додали'
           }
@@ -327,12 +327,3 @@ function showFavouriteFilms(chatId, telegramId) {
     })
 }
 
-function sendFilmCinemasByQuery(userId, query) {
-  Cinema.find(query).then(cinemas => {
-    const html = cinemas.map((c, i) => {
-      return `<b>${i + 1}</b> ${c.name} - /c${c.uuid}`
-    }).join('\n')
-
-    sendHtml(userId, html, 'home')
-  })
-}

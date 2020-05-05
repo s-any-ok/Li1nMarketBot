@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const FilmSchema = new Schema({
+const ProductSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -14,16 +14,13 @@ const FilmSchema = new Schema({
     type: String,
     required: true,
   },
-  year: {
+  price: {
     type: Number
   },
-  rate: {
-    type: Number
-  },
-  length: {
+  amount: {
     type: String
   },
-  country: {
+  data: {
     type: String
   },
   link: {
@@ -32,10 +29,9 @@ const FilmSchema = new Schema({
   picture: {
     type: String
   },
-  cinemas: {
-    type: [String],
-    default: []
+  shop: {
+    type: String
   }
 })
 
-mongoose.model('films', FilmSchema)
+mongoose.model('products', ProductSchema)

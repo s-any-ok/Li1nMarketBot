@@ -2,15 +2,17 @@ const kb = require('./keyboard-button');
 
 module.exports = {
     home: [
-        [kb.home.films, kb.home.cinemas],
+        [kb.home.products, kb.home.shops],
         [kb.home.favourite]
     ],
-    film: [
-        [kb.film.action, kb.film.comedy],
-        [kb.film.random],
+    product: [
+        [kb.product.sausage_cheese, kb.product.meat_fish_poultry],
+        [kb.product.fruit_vegetables, kb.product.milk_eggs],
+        [kb.product.water],
+        [kb.product.random],
         [kb.back ]
     ],
-    cinemas: [
+    shops: [
         [
           {
             text: 'Надіслати місцезнаходження',

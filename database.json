@@ -1,152 +1,212 @@
 {
-    "films": [
+    "products": [
       {
-        "uuid": "f123",
-        "name": "Начало",
-        "type": "action",
-        "year": "2010",
-        "rate": 8.665,
-        "length": "2:28",
-        "country": "США",
-        "link": "https://www.kinopoisk.ru/film/nachalo-2010-447301",
-        "picture": "https://www.kinopoisk.ru/images/film_big/447301.jpg",
-        "cinemas": ["c123", "c345"]
+        "uuid": "p123",
+        "name": "Ананас Голд",
+        "type": "fruit_vegetables",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "1 шт.",
+        "price": 64.99,
+        "link": "https://silpo.ua",
+        "picture": "https://content.silpo.ua/sku/ecommerce/3/545x440wwm/34604_545x440wwm_eb37f5e7-4921-1b84-6ab5-2abd1f3da61e.png",
+        "shop": "Сільпо"
       },
       {
-        "uuid": "f234",
-        "name": "Гладиатор",
-        "type": "action",
-        "year": "2000",
-        "rate": 8.592,
-        "length": "2:35",
-        "country": "США",
-        "link": "https://www.kinopoisk.ru/film/gladiator-2000-474",
-        "picture": "https://www.kinopoisk.ru/images/film_big/474.jpg",
-        "cinemas": ["c123", "c456"]
+        "uuid": "p124",
+        "name": "Біфідойогурт «Активіа» полуниця-злаки 1,5% жиру",
+        "type": "milk_eggs",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "580 г",
+        "price": 24.99,
+        "link": "https://silpo.ua",
+        "picture": "https://content.silpo.ua/sku/ecommerce/59/545x440wwm/596146_545x440wwm_b355ac48-de59-c58b-46c8-05f3e9dd996a.png",
+        "shop": "Сільпо"
       },
       {
-        "uuid": "f345",
-        "name": "Матрица",
-        "type": "action",
-        "year": "1999",
-        "rate": 8.491,
-        "length": "2:16",
-        "country": "США",
-        "link": "https://www.kinopoisk.ru/film/matrica-1999-301",
-        "picture": "https://st.kp.yandex.net/images/film_iphone/iphone360_301.jpg",
-        "cinemas": ["c345", "c234"]
+        "uuid": "p125",
+        "name": "Вода Bon Aqua газована",
+        "type": "water",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "1,5 л",
+        "price": 8.49,
+        "link": "https://silpo.ua",
+        "picture": "https://content.silpo.ua/sku/ecommerce/0/545x440wwm/487_545x440wwm_adf880ad-5582-cd8b-af0f-229bd4e678b6.png",
+        "shop": "Сільпо"
       },
       {
-        "uuid": "f456",
-        "name": "Брат",
-        "type": "action",
-        "year": "1997",
-        "rate": 8.491,
-        "length": "1:40",
-        "country": "Россия",
-        "link": "https://www.kinopoisk.ru/film/brat-1997-41519",
-        "picture": "https://www.kinopoisk.ru/images/film_big/41519.jpg",
-        "cinemas": ["c345", "c456"]
+        "uuid": "p126",
+        "name": "Шашлик свинячий «Селянський»",
+        "type": "meat_fish_poultry",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "1 кг",
+        "price": 109,
+        "link": "https://silpo.ua",
+        "picture": "https://content.silpo.ua/sku/ecommerce/78/545x440wwm/783017_545x440wwm_6407aa74-8c01-6875-e762-d28044dac89d.png",
+        "shop": "Сільпо"
       },
       {
-        "uuid": "f567",
-        "name": "Карты, деньги, два ствола",
-        "type": "comedy",
-        "year": "1998",
-        "rate": 8.543,
-        "length": "1:47",
-        "country": "Великобритания",
-        "link": "https://www.kinopoisk.ru/film/karty-dengi-dva-stvola-1998-522",
-        "picture": "https://st.kp.yandex.net/images/film_iphone/iphone360_522.jpg",
-        "cinemas": ["c345", "c567", "c123"]
+        "uuid": "p127",
+        "name": "Ковбаса «Тульчин» «Класік»",
+        "type": "sausage_cheese",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "1 кг",
+        "price": 99,
+        "link": "https://silpo.ua",
+        "picture": "https://content.silpo.ua/sku/ecommerce/81/545x440wwm/810198_545x440wwm_5521e8e0-773d-8436-3900-3b99fed5a55d.png",
+        "shop": "Сільпо"
       },
       {
-        "uuid": "f678",
-        "name": "Форрест Гамп",
-        "type": "comedy",
-        "year": "1994",
-        "rate": 8.922,
-        "length": "2:22",
-        "country": "США",
-        "link": "https://www.kinopoisk.ru/film/forrest-gamp-1994-448",
-        "picture": "https://st.kp.yandex.net/images/film_iphone/iphone360_448.jpg",
-        "cinemas": ["c234", "c123"]
+        "uuid": "p128",
+        "name": "Сир плавлений «Весела Корівка» вершковий 46%",
+        "type": "sausage_cheese",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "90 г",
+        "price": 10.99,
+        "link": "https://silpo.ua",
+        "picture": "https://content.silpo.ua/sku/ecommerce/74/545x440wwm/742246_545x440wwm_cb9291b8-617f-96f1-4834-3b0479851ecc.png",
+        "shop": "Сільпо"
       },
       {
-        "uuid": "f789",
-        "name": "1+1",
-        "type": "comedy",
-        "year": "2011",
-        "rate": 8.812,
-        "length": "1:52",
-        "country": "Франция",
-        "link": "https://www.kinopoisk.ru/film/11-2011-535341",
-        "picture": "https://st.kp.yandex.net/images/film_iphone/iphone360_535341.jpg",
-        "cinemas": ["c567", "c345", "c456"]
+        "uuid": "p129",
+        "name": "Свинина, корейка на кістці охолоджена",
+        "type": "meat_fish_poultry",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "1 кг",
+        "price": 115,
+        "link": "https://silpo.ua",
+        "picture": "https://content.silpo.ua/sku/ecommerce/49/545x440wwm/492069_545x440wwm_470f46e3-234e-d753-e941-6943d7766414.png",
+        "shop": "Сільпо"
       },
       {
-        "uuid": "f890",
-        "name": "Достучаться до небес",
-        "type": "comedy",
-        "year": "1997",
-        "rate": 8.634,
-        "length": "1:27",
-        "country": "Германия",
-        "link": "https://www.kinopoisk.ru/film/dostuchatsya-do-nebes-1997-32898",
-        "picture": "https://st.kp.yandex.net/images/film_iphone/iphone360_32898.jpg",
-        "cinemas": ["c456", "c123"]
+        "uuid": "p130",
+        "name": "Сир кисломолочний. Білоцерківський нежирний",
+        "type": "milk_eggs",
+        "data": "06.05.2020 - 12.05.2020",
+        "amount": "400 г",
+        "price": 29.90,
+        "link": "https://www.atbmarket.com/hot/akcii/economy/#31503",
+        "picture": "https://www.atbmarket.com/attachments/product/5/2/8/5/b/5285b78c308d73b2d793015f252dc640.jpg",
+        "shop": "АТБ"
+      },
+      {
+        "uuid": "p131",
+        "name": "Сир кисломолочний. Білоцерківський 5%",
+        "type": "milk_eggs",
+        "data": "06.05.2020 - 12.05.2020",
+        "amount": "400 г",
+        "price": 31.90,
+        "link": "https://www.atbmarket.com/hot/akcii/economy/#31503",
+        "picture": "https://www.atbmarket.com/attachments/product/1/c/e/e/7/1cee74d598f521a6faaab392dcb1e7e4.jpg",
+        "shop": "АТБ"
+      },
+      {
+        "uuid": "p132",
+        "name": "Fanta Апельсин/Sprite безалкoгoльний сильнoгазoваний",
+        "type": "water",
+        "data": "06.05.2020 - 12.05.2020",
+        "amount": "2 л",
+        "price": 17.30,
+        "link": "https://www.atbmarket.com/hot/akcii/economy/#31503",
+        "picture": "https://www.atbmarket.com/attachments/product/1/2/2/8/8/1228858e3a18d886aa75c4d06f8f14a2.jpg",
+        "shop": "АТБ"
+      },
+      {
+        "uuid": "p133",
+        "name": "Ковбаса. АТБ Спецзамовлення Дитяча вершкова",
+        "type": "sausage_cheese",
+        "data": "06.05.2020 - 12.05.2020",
+        "amount": "1 кг",
+        "price": 178.95,
+        "link": "https://www.atbmarket.com/hot/akcii/economy/#31503",
+        "picture": "https://www.atbmarket.com/attachments/product/d/0/3/2/6/d03267426f02c80d641f81d2056fc2f1.jpg",
+        "shop": "АТБ"
+      },
+      {
+        "uuid": "p134",
+        "name": "Авокадо",
+        "type": "fruit_vegetables",
+        "data": "06.05.2020 - 12.05.2020",
+        "amount": "1 кг",
+        "price": 64.99,
+        "link": "https://www.atbmarket.com/hot/akcii/economy/#31503",
+        "picture": "https://www.atbmarket.com/attachments/product/0/4/0/b/d/040bd54426631ec97cd19b03007ff5d5.jpg",
+        "shop": "АТБ"
+      },
+      {
+        "uuid": "p135",
+        "name": "Яблуко «Бреберн»",
+        "type": "fruit_vegetables",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "1 кг",
+        "price": 16.99,
+        "link": "https://furshet.ua",
+        "picture": "https://furshet.ua/sites/default/files/sync/out/001_scandal_09_2020.jpg.pagespeed.ce.QMRuRsH8H8.jpg",
+        "shop": "Фуршет"
+      },
+      {
+        "uuid": "p136",
+        "name": "Ковбаски гриль з сиром Mozzarella н/к в/г ТМ «М’ясна Гільдія»",
+        "type": "sausage_cheese",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "100 г",
+        "price": 19.25,
+        "link": "https://furshet.ua/actions",
+        "picture": "https://furshet.ua/sites/default/files/sync/out/003_scandal_09_2020.jpg.pagespeed.ce.JH5niASjtx.jpg",
+        "shop": "Фуршет"
+      },
+      {
+        "uuid": "p137",
+        "name": "Сметана 21% ТМ «Молочний вибір»",
+        "type": "milk_eggs",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "380 г",
+        "price": 17.99,
+        "link": "https://furshet.ua/actions",
+        "picture": "https://furshet.ua/sites/default/files/sync/out/008_scandal_09_2020.jpg.pagespeed.ce.lHSOiYEa86.jpg",
+        "shop": "Фуршет"
+      },
+      {
+        "uuid": "p138",
+        "name": "Напій безалкогольний сильногазований в асортименті ТМ Pepsi",
+        "type": "water",
+        "data": "30.04.2020 - 06.05.2020",
+        "amount": "1 л",
+        "price": 12.99,
+        "link": "https://furshet.ua/actions",
+        "picture": "https://furshet.ua/sites/default/files/sync/out/103_scandal_09_2020.jpg.pagespeed.ce.V6pZ2N2Z6D.jpg",
+        "shop": "Фуршет"
       }
     ],
-    "cinemas": [
+    "shops": [
       {
-        "uuid": "c123",
-        "name": "World Cinema Plus",
+        "uuid": "s123",
+        "name": "Сільпо",
         "location": {
-          "latitude": 59.883744,
-          "longitude": 30.268672
+          "latitude": 50.451394,
+          "longitude": 30.468119
         },
-        "url": "http://world-cinema-plus.com",
-        "films": ["f890", "f678", "f567", "f123", "f234"]
+        "url": "https://silpo.ua",
+        "products": ["p123", "p124", "p125", "p126", "p127", "p128", "p129"]
       },
       {
-        "uuid": "c234",
-        "name": "The Greatest Cinema",
+        "uuid": "s124",
+        "name": "АТБ",
         "location": {
-          "latitude": 59.843103,
-          "longitude": 30.305378
+          "latitude": 50.448331,
+          "longitude": 30.464540
         },
-        "url": "http://the-greatest-cinema.com",
-        "films": ["f345", "f678"]
+        "url": "https://www.atbmarket.com/",
+        "products": ["p130", "p131", "p132", "p133", "p134"]
       },
       {
-        "uuid": "c345",
-        "name": "Watch your eyes",
+        "uuid": "s125",
+        "name": "Фуршет",
         "location": {
-          "latitude": 60.024840,
-          "longitude": 30.390167
+          "latitude": 50.458985,
+          "longitude": 30.398824
         },
-        "url": "http://watch-your-eyes.com",
-        "films": ["f123", "f345", "f456", "f567", "f789"]
-      },
-      {
-        "uuid": "c456",
-        "name": "Happy hours",
-        "location": {
-          "latitude": 59.828174,
-          "longitude": 30.377967
-        },
-        "url": "http://happy-hours.com",
-        "films": ["f234", "f456", "f789", "f890"]
-      },
-      {
-        "uuid": "c567",
-        "name": "Family Cinema",
-        "location": {
-          "latitude": 60.000354,
-          "longitude": 30.194079
-        },
-        "url": "http://family-cinema.com",
-        "films": ["f567", "f789"]
+        "url": "https://furshet.ua",
+        "products": ["p135", "p136", "p137", "p138"]
       }
     ]
   }

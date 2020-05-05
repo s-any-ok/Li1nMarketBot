@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const CinemaSchema = new Schema({
+const ShopSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -17,10 +17,10 @@ const CinemaSchema = new Schema({
   location: {
     type: Schema.Types.Mixed
   },
-  films: {
+  products: {
     type: [String],
     default: []
   }
 })
 
-mongoose.model('cinemas', CinemaSchema)
+mongoose.model('shops', ShopSchema)
