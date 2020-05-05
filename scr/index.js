@@ -67,15 +67,7 @@ bot.on('message', msg => {
       case kb.home.cinemas:
       bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
         reply_markup: {
-          keyboard: [
-            [
-              {
-                text: 'Надіслати місцезнаходження',
-                request_location: true
-              }
-            ],
-            [kb.back]
-          ]
+          keyboard: keyboard.cinemas
         }
       })
       break;
@@ -175,7 +167,7 @@ function sendCinemasInCords(chatId, location) {
     cinemas = _.sortBy(cinemas, 'distance')
 
     const html = cinemas.map((c, i) => {
-      return `<b>${i + 1}</b> ${c.name}. <em>Відстань</em> - <strong>${c.distance}</strong> км. /c${c.uuid}`
+      return `<b>${i + 1}.</b> ${c.name}. <em>Відстань</em> - <strong>${c.distance}</strong> км. /c${c.uuid}`
     }).join('\n')
 
     sendHtml(chatId, html, 'home')
