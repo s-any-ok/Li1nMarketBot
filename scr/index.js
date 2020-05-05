@@ -125,7 +125,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
      User.findOne({telegramId: msg.from.id})
     ])
   .then(([product, user]) => {
-    const caption = `${product.name}\n ${product.amount}\nЦіна: ${product.price}\nАкційний термін:\n${product.data}`;
+    const caption = `${product.name} - ${product.amount}\nЦіна: ${product.price} грн.\nАкційний термін:\n${product.data}`;
     
     let isFavourite = false;
 
@@ -170,7 +170,7 @@ bot.onText(/\/s(.+)/, (msg, [source, match]) => {
 
   Shop.findOne({uuid: shopUuid}).then(shop => {
 
-    bot.sendMessage(chatId, `${shop.name}`, {
+    bot.sendMessage(chatId, `<b>${shop.name}</b>`, {
       reply_markup: {
         inline_keyboard: [
           [
@@ -222,7 +222,7 @@ bot.on('callback_query', query => {
   } else if (type === ACTION_TYPE.PROD_TOGGLE_FAV) {
     toggleFavouriteProducts(userId, query.id, data)
   } else if (type === ACTION_TYPE.ACTION_PRODUCTS) {
-    sendFilmsByQuery(userId, {uuid: {'$in': data.productUuids}})
+    sendProductsByQuery(userId, {uuid: {'$in': data.productUuids}})
   }
 })
 
