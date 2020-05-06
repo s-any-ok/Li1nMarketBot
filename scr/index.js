@@ -168,7 +168,7 @@ bot.onText(/\/s(.+)/, (msg, [source, match]) => {
   const shopUuid = helpers.getItemUuid(source);
   const chatId = helpers.getChatId(msg);
 
-  Shop.findOne({uuid: shopUuid}).then(shop => {
+  Shop.find({uuid: shopUuid}).then(shop => {
 
     bot.sendMessage(chatId, `Магазин ${shop.name}`, {
       reply_markup: {
