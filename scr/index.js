@@ -312,7 +312,7 @@ function showFavouriteProducts(chatId, telegramId) {
           let html
           if (products.length) {
             html = products.map(p => {
-              return `${p.name} - <b>${p.price}</b> (/p${p.uuid})`
+              return `✔️ ${p.name} - <b>${p.price}</b> (/p${p.uuid})\n`
             }).join('\n')
             html = `<b>Ваші продукти:</b>\n${html}`
           } else {
