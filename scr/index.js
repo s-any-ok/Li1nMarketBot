@@ -87,7 +87,7 @@ bot.on('message', msg => {
       });
       break;
       case kb.home.shops:
-      bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
+      bot.sendMessage(chatId, '🏠 Надіслати місцезнаходження', {
         reply_markup: {
           keyboard: [
             [
@@ -270,7 +270,7 @@ function sendShopsInCords(chatId, location) {
       s.distance = geolib.getDistance(location, s.location) / 1000
     })
 
-    shops = _.sortBy(shops, 'distance')
+    //shops = _.sortBy(shops, 'distance')
 
     const html = shops.map((s, i) => {
       return `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.\n🆔 /s${s.uuid}`
