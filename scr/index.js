@@ -208,7 +208,11 @@ bot.on('callback_query', query => {
   const userId = query.from.id
 
   let data
-  
+  try {
+    data = JSON.parse(query.data)
+  } catch (e) {
+    throw new Error('Data is not a object')
+  }
 
   const { type } = data
 
