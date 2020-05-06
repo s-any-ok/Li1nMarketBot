@@ -125,7 +125,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
      User.findOne({telegramId: msg.from.id})
     ])
   .then(([product, user]) => {
-    const caption = `${product.name} - ${product.amount}\nЦіна: ${product.price} грн.\nАкційний термін:\n${product.data}`;
+    const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\nАкційний термін:\n${product.data}`;
     
     let isFavourite = false;
 
@@ -312,7 +312,7 @@ function showFavouriteProducts(chatId, telegramId) {
           let html
           if (products.length) {
             html = products.map(p => {
-              return `✅  ${p.name}\n🏷️ <b>${p.price} грн.\n</b> (/p${p.uuid})\n`
+              return `✅  ${p.name}\n🏷️ <b>${p.price} грн.\n🏬 <b>${p.shop}\n</b> (/p${p.uuid})\n`
             }).join('\n')
             html = `<b>Ваші продукти:</b>\n\n${html}`
           } else {
