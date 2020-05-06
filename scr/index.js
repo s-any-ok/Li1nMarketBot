@@ -89,15 +89,7 @@ bot.on('message', msg => {
       case kb.home.shops:
       bot.sendMessage(chatId, '🏠 Надіслати місцезнаходження', {
         reply_markup: {
-          keyboard: [
-            [
-              {
-                text: '🏠 Надіслати місцезнаходження',
-                request_location: true
-              }
-            ],
-            [kb.back]
-          ]
+          keyboard: keyboard.shops
         }
       })
       break;
@@ -216,11 +208,7 @@ bot.on('callback_query', query => {
   const userId = query.from.id
 
   let data
-  try {
-    data = JSON.parse(query.data)
-  } catch (e) {
-    throw new Error('Data is not a object')
-  }
+  
 
   const { type } = data
 
