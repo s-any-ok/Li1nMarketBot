@@ -107,7 +107,7 @@ bot.onText(/\/start/, msg => {
 
     const chatId = helpers.getChatId(msg);
 
-    const text = `Вітаю, ${msg.from.first_name}\nВиберіть команду для початку роботи!`
+    const text = `✋ Вітаю, ${msg.from.first_name}\nВиберіть команду для початку роботи!`
 
     bot.sendMessage(chatId, text, {
       reply_markup: {
