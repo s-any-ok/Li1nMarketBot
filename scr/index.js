@@ -266,7 +266,7 @@ function sendShopsInCords(chatId, location) {
 
     const html = shops.map((s, i) => {
       return `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.\n🆔 /s${s.uuid}`
-    }).join('\n')
+    }).join('\n\n')
 
     sendHtml(chatId, html, 'home')
   })
