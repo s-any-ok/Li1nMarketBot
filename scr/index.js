@@ -232,7 +232,7 @@ function sendProductsByQuery(chatId, query){
   Product.find(query).then(products => {
 
     const html = products.map((p, i) => {
-      return `<b>${i + 1})</b> ${p.name} - /p${p.uuid}`
+      return `<b>${i + 1})</b> ${p.name}\n🇮🇩 /p${p.uuid}`
     }).join('\n');
 
     sendHtml(chatId, html, 'products')
