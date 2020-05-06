@@ -125,7 +125,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
      User.findOne({telegramId: msg.from.id})
     ])
   .then(([product, user]) => {
-    const caption = `${product.name} - ${product.amount}\nЦіна: ${product.price} грн.\nАкційний термін:\n${product.data}`;
+    const caption = `${product.name}\n${product.amount}\nЦіна: ${product.price} грн.\nАкційний термін:\n${product.data}`;
     
     let isFavourite = false;
 
