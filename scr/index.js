@@ -89,7 +89,15 @@ bot.on('message', msg => {
       case kb.home.shops:
       bot.sendMessage(chatId, 'Надіслати місцезнаходження', {
         reply_markup: {
-          keyboard: keyboard.shops
+          keyboard: [
+            [
+              {
+                text: '🏠 Надіслати місцезнаходження',
+                request_location: true
+              }
+            ],
+            [kb.back]
+          ]
         }
       })
       break;
