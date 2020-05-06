@@ -232,7 +232,7 @@ function sendProductsByQuery(chatId, query){
   Product.find(query).then(products => {
 
     const html = products.map((p, i) => {
-      return `<b>${i + 1})</b> ${p.name}\n🇮🇩 /p${p.uuid}`
+      return `<b>${i + 1})</b> ${p.name}\n🆔 /p${p.uuid}`
     }).join('\n');
 
     sendHtml(chatId, html, 'products')
@@ -265,7 +265,7 @@ function sendShopsInCords(chatId, location) {
     shops = _.sortBy(shops, 'distance')
 
     const html = shops.map((s, i) => {
-      return `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.\n🇮🇩 /s${s.uuid}`
+      return `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.\n🆔 /s${s.uuid}`
     }).join('\n')
 
     sendHtml(chatId, html, 'home')
@@ -312,9 +312,9 @@ function showFavouriteProducts(chatId, telegramId) {
           let html
           if (products.length) {
             html = products.map(p => {
-              return `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🇮🇩 (/p${p.uuid})\n`
+              return `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`
             }).join('\n')
-            html = `<b>Ваші продукти:</b>\n\n${html}`
+            html = `🛍️ <b>Ваші продукти:</b>\n\n${html}`
           } else {
             html = 'Ви ще нічого не додали'
           }
