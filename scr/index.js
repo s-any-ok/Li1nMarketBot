@@ -59,6 +59,25 @@ bot.on('message', msg => {
             });
             break;
 
+        case kb.home.shops:
+            bot.sendMessage(chatId, '🏠 Надіслати місцезнаходження', {
+                reply_markup: {
+                    keyboard: keyboard.shops
+                }
+            })
+            break;
+
+        case kb.home.help:
+
+            const caption = `Інформація покищо відсутня`;
+
+            bot.sendMessage(chatId, caption, {
+                reply_markup: {
+                    keyboard: keyboard.home
+                }
+            })
+            break;
+
         case kb.product.fruit_vegetables:
             sendProductsByQuery(chatId, { type: 'fruit_vegetables' })
             break;
@@ -86,13 +105,7 @@ bot.on('message', msg => {
             });
             break;
 
-        case kb.home.shops:
-            bot.sendMessage(chatId, '🏠 Надіслати місцезнаходження', {
-                reply_markup: {
-                    keyboard: keyboard.shops
-                }
-            })
-            break;
+
 
     }
 
@@ -220,19 +233,6 @@ bot.on('callback_query', query => {
 
 // ------------------------------------
 
-function sendProductsByQuery(chatId, query) {
-    Product.find(query).then(products => {
-
-        const html = products.map((p, i) => {
-            return `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`
-        }).join('\n');
-
-        sendHtml(chatId, html, 'products')
-
-    })
-}
-
-
 function sendHtml(chatId, html, keyboardName = null) {
     const options = {
         parse_mode: 'HTML'
@@ -245,6 +245,18 @@ function sendHtml(chatId, html, keyboardName = null) {
     }
 
     bot.sendMessage(chatId, html, options)
+}
+
+function sendProductsByQuery(chatId, query) {
+    Product.find(query).then(products => {
+
+        const html = products.map((p, i) => {
+            return `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`
+        }).join('\n');
+
+        sendHtml(chatId, html, 'products')
+
+    })
 }
 
 function sendShopsInCords(chatId, location) {
