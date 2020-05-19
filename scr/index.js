@@ -6,7 +6,6 @@ const config = require('./config');
 const helpers = require('./helpers');
 const kb = require('./button');
 const keyboard = require('./keyboard');
-const fn = require('./function');
 
 const database = require('../database.json');
 
@@ -227,7 +226,7 @@ function sendProductsByQuery(chatId, query) {
             return `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`
         }).join('\n');
 
-        fn.sendHtml(chatId, html, 'products')
+        sendHtml(chatId, html, 'products')
 
     })
 }
@@ -261,7 +260,7 @@ function sendShopsInCords(chatId, location) {
             return `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.\n🆔 /s${s.uuid}`
         }).join('\n\n')
 
-        fn.sendHtml(chatId, html, 'home')
+        sendHtml(chatId, html, 'home')
     })
 }
 
@@ -312,10 +311,10 @@ function showFavouriteProducts(chatId, telegramId) {
                         html = 'Ви ще нічого не додали'
                     }
 
-                    fn.sendHtml(chatId, html, 'home')
+                    sendHtml(chatId, html, 'home')
                 })
             } else {
-                fn.sendHtml(chatId, 'Ви ще нічого не додали', 'home')
+                sendHtml(chatId, 'Ви ще нічого не додали', 'home')
             }
         })
 }
