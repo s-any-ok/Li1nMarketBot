@@ -273,7 +273,7 @@ function sendShopsInCords(chatId, location) {
             return `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.\n🆔 /s${s.uuid}`
         }).join('\n\n')
 
-        sendHtml(chatId, html, 'home')
+        sendHtml(chatId, html, 'shops')
     })
 }
 
