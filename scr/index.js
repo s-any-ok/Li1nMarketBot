@@ -317,7 +317,7 @@ function showFavouriteProducts(chatId, telegramId) {
                     const html
                     if (products.length) {
 
-                        products = _.sortBy(products, 'price');
+                        //products = _.sortBy(products, 'price');
 
                         html = products.map(p => {
                             return `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`
