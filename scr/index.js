@@ -140,7 +140,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
         .then(([product, user]) => {
             const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Акційний термін:\n${product.data}`;
 
-            let isFavourite = false;
+            const isFavourite = false;
 
             if (user) {
                 isFavourite = user.products.indexOf(product.uuid) !== -1;
@@ -212,7 +212,7 @@ bot.onText(/\/s(.+)/, (msg, [source, match]) => {
 bot.on('callback_query', query => {
     const userId = query.from.id
 
-    let data
+    const data
     try {
         data = JSON.parse(query.data)
     } catch (e) {
@@ -278,7 +278,7 @@ function sendShopsInCords(chatId, location) {
 }
 
 function toggleFavouriteProducts(userId, queryId, { productUuid, isFav }) {
-    let userPromise
+    const userPromise
 
     User.findOne({ telegramId: userId })
         .then(user => {
@@ -314,8 +314,11 @@ function showFavouriteProducts(chatId, telegramId) {
 
             if (user) {
                 Product.find({ uuid: { '$in': user.products } }).then(products => {
-                    let html
+                    const html
                     if (products.length) {
+
+                        products = _.sortBy(products, 'price');
+
                         html = products.map(p => {
                             return `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`
                         }).join('\n')
