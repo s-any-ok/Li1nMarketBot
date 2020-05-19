@@ -1,4 +1,4 @@
-<h1 align="center"> 🛒 Li1nMarketBot</h1>
+🛒 Li1nMarketBot
 
 Посилання на бота: https://t.me/Li1nMarketBot
 
