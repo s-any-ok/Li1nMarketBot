@@ -45,59 +45,60 @@ bot.on('message', msg => {
 
     const chatId = helpers.getChatId(msg);
 
-    case kb.home.favourite:
-        showFavouriteProducts(chatId, msg.from.id)
-        break;
+    switch (msg.text) {
 
-        switch (msg.text) {
-            case kb.home.products:
-                bot.sendMessage(chatId, 'Оберіть категорію товару', {
-                    reply_markup: {
-                        keyboard: keyboard.product
-                    }
-                });
-                break;
+        case kb.home.favourite:
+            showFavouriteProducts(chatId, msg.from.id)
+            break;
 
-            case kb.product.fruit_vegetables:
-                sendProductsByQuery(chatId, { type: 'fruit_vegetables' })
-                break;
-            case kb.product.milk_eggs:
-                sendProductsByQuery(chatId, { type: 'milk_eggs' })
-                break;
-            case kb.product.meat_fish_poultry:
-                sendProductsByQuery(chatId, { type: 'meat_fish_poultry' })
-                break;
-            case kb.product.sausage_cheese:
-                sendProductsByQuery(chatId, { type: 'sausage_cheese' })
-                break;
-            case kb.product.water:
-                sendProductsByQuery(chatId, { type: 'water' })
-                break;
-            case kb.product.all:
-                sendProductsByQuery(chatId, {})
-                break;
+        case kb.home.products:
+            bot.sendMessage(chatId, 'Оберіть категорію товару', {
+                reply_markup: {
+                    keyboard: keyboard.product
+                }
+            });
+            break;
 
-            case kb.back:
-                bot.sendMessage(chatId, 'Що бажаєте переглянути?', {
-                    reply_markup: {
-                        keyboard: keyboard.home
-                    }
-                });
-                break;
+        case kb.product.fruit_vegetables:
+            sendProductsByQuery(chatId, { type: 'fruit_vegetables' })
+            break;
+        case kb.product.milk_eggs:
+            sendProductsByQuery(chatId, { type: 'milk_eggs' })
+            break;
+        case kb.product.meat_fish_poultry:
+            sendProductsByQuery(chatId, { type: 'meat_fish_poultry' })
+            break;
+        case kb.product.sausage_cheese:
+            sendProductsByQuery(chatId, { type: 'sausage_cheese' })
+            break;
+        case kb.product.water:
+            sendProductsByQuery(chatId, { type: 'water' })
+            break;
+        case kb.product.all:
+            sendProductsByQuery(chatId, {})
+            break;
 
-            case kb.home.shops:
-                bot.sendMessage(chatId, '🏠 Надіслати місцезнаходження', {
-                    reply_markup: {
-                        keyboard: keyboard.shops
-                    }
-                })
-                break;
+        case kb.back:
+            bot.sendMessage(chatId, 'Що бажаєте переглянути?', {
+                reply_markup: {
+                    keyboard: keyboard.home
+                }
+            });
+            break;
 
-        }
+        case kb.home.shops:
+            bot.sendMessage(chatId, '🏠 Надіслати місцезнаходження', {
+                reply_markup: {
+                    keyboard: keyboard.shops
+                }
+            })
+            break;
 
-        if (msg.location) {
-            sendShopsInCords(chatId, msg.location)
-        }
+    }
+
+    if (msg.location) {
+        sendShopsInCords(chatId, msg.location)
+    }
 
 
 })
