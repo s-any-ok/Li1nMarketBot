@@ -227,7 +227,7 @@ function sendProductsByQuery(chatId, query) {
             return `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`
         }).join('\n');
 
-        helpers.sendHtml(chatId, html, 'products')
+        sendHtml(chatId, html, 'products')
 
     })
 }
