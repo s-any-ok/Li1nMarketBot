@@ -316,6 +316,7 @@ function showFavouriteProducts(chatId, telegramId) {
                 Product.find({ uuid: { '$in': user.products } }).then(products => {
                     let html
                     if (products.length) {
+                        products = _.sortBy(products, 'price')
                         html = products.map(p => {
                             return `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`
                         }).join('\n')
