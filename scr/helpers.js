@@ -1,11 +1,12 @@
+'use strict';
 module.exports = {
 
-    getChatId(msg) {
-        return msg.chat.id;
-    },
+  getChatId(msg) {
+    return msg.chat.id;
+  },
 
-    getItemUuid(source) {
-        return source.substr(2, source.length);
-    }
+  getItemUuid(source) {
+    return source.substr(2, source.length);
+  },
 
-}
+};
