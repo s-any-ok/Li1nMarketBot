@@ -3,7 +3,7 @@
       {
         "uuid": "p123",
         "name": "Ананас Голд",
-        "type": "fruit_vegetables",
+        "type": "fruitVegetables",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "1 шт.",
         "price": 64.99,
@@ -14,7 +14,7 @@
       {
         "uuid": "p124",
         "name": "Біфідойогурт «Активіа» полуниця-злаки 1,5% жиру",
-        "type": "milk_eggs",
+        "type": "milkEggs",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "580 г",
         "price": 24.99,
@@ -36,7 +36,7 @@
       {
         "uuid": "p126",
         "name": "Шашлик свинячий «Селянський»",
-        "type": "meat_fish_poultry",
+        "type": "meatFishPoultry",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "1 кг",
         "price": 109,
@@ -47,7 +47,7 @@
       {
         "uuid": "p127",
         "name": "Ковбаса «Тульчин» «Класік»",
-        "type": "sausage_cheese",
+        "type": "sausageCheese",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "1 кг",
         "price": 99,
@@ -58,7 +58,7 @@
       {
         "uuid": "p128",
         "name": "Сир плавлений «Весела Корівка» вершковий 46%",
-        "type": "sausage_cheese",
+        "type": "sausageCheese",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "90 г",
         "price": 10.99,
@@ -69,7 +69,7 @@
       {
         "uuid": "p129",
         "name": "Свинина, корейка на кістці охолоджена",
-        "type": "meat_fish_poultry",
+        "type": "meatFishPoultry",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "1 кг",
         "price": 115,
@@ -80,7 +80,7 @@
       {
         "uuid": "p130",
         "name": "Сир кисломолочний. Білоцерківський нежирний",
-        "type": "milk_eggs",
+        "type": "milkEggs",
         "data": "06.05.2020 - 12.05.2020",
         "amount": "400 г",
         "price": 29.90,
@@ -91,7 +91,7 @@
       {
         "uuid": "p131",
         "name": "Сир кисломолочний. Білоцерківський 5%",
-        "type": "milk_eggs",
+        "type": "milkEggs",
         "data": "06.05.2020 - 12.05.2020",
         "amount": "400 г",
         "price": 31.90,
@@ -113,7 +113,7 @@
       {
         "uuid": "p133",
         "name": "Ковбаса. АТБ Спецзамовлення Дитяча вершкова",
-        "type": "sausage_cheese",
+        "type": "sausageCheese",
         "data": "06.05.2020 - 12.05.2020",
         "amount": "1 кг",
         "price": 178.95,
@@ -124,7 +124,7 @@
       {
         "uuid": "p134",
         "name": "Авокадо",
-        "type": "fruit_vegetables",
+        "type": "fruitVegetables",
         "data": "06.05.2020 - 12.05.2020",
         "amount": "1 кг",
         "price": 64.99,
@@ -135,7 +135,7 @@
       {
         "uuid": "p135",
         "name": "Яблуко «Бреберн»",
-        "type": "fruit_vegetables",
+        "type": "fruitVegetables",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "1 кг",
         "price": 16.99,
@@ -146,7 +146,7 @@
       {
         "uuid": "p136",
         "name": "Ковбаски гриль з сиром Mozzarella н/к в/г ТМ «М’ясна Гільдія»",
-        "type": "sausage_cheese",
+        "type": "sausageCheese",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "100 г",
         "price": 19.25,
@@ -157,7 +157,7 @@
       {
         "uuid": "p137",
         "name": "Сметана 21% ТМ «Молочний вибір»",
-        "type": "milk_eggs",
+        "type": "milkEggs",
         "data": "30.04.2020 - 06.05.2020",
         "amount": "380 г",
         "price": 17.99,
