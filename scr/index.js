@@ -9,7 +9,7 @@ const config = require('./config');
 const helpers = require('./helpers');
 const kb = require('./button');
 const keyboard = require('./keyboard');
-const database = require('../database.json');
+//const database = require('../database.json');
 
 const options = {
   webHook: { port: process.env.PORT },
@@ -40,7 +40,7 @@ const Product = mongoose.model('products');
 const Shop = mongoose.model('shops');
 const User = mongoose.model('users');
 
-database.products.forEach(p => new Product(p).save());
+//database.products.forEach(p => new Product(p).save());
 //database.shops.forEach(s => new Shop(s).save());
 
 bot.on('message', msg => {
