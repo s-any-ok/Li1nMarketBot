@@ -87,7 +87,7 @@ bot.on('message', msg => {
     case kb.product.meatFishPoultry:
       sendProductsByQuery(chatId, { type: 'meatFishPoultry' });
       break;
-    case kb.product.sausageChees:
+    case kb.product.sausageCheese:
       sendProductsByQuery(chatId, { type: 'sausageCheese' });
       break;
     case kb.product.water:
