@@ -78,16 +78,16 @@ bot.on('message', msg => {
       });
       break;
 
-    case kb.product.fruit_vegetables:
+    case kb.product.ruitVegetables:
       sendProductsByQuery(chatId, { type: 'fruitVegetables' });
       break;
-    case kb.product.milk_eggs:
+    case kb.product.milkEggs:
       sendProductsByQuery(chatId, { type: 'milkEggs' });
       break;
-    case kb.product.meat_fish_poultry:
+    case kb.product.meatFishPoultry:
       sendProductsByQuery(chatId, { type: 'meatFishPoultry' });
       break;
-    case kb.product.sausage_cheese:
+    case kb.product.sausageChees:
       sendProductsByQuery(chatId, { type: 'sausageCheese' });
       break;
     case kb.product.water:
