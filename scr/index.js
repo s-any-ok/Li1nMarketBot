@@ -78,7 +78,7 @@ bot.on('message', msg => {
       });
       break;
 
-    case kb.product.ruitVegetables:
+    case kb.product.fruitVegetables:
       sendProductsByQuery(chatId, { type: 'fruitVegetables' });
       break;
     case kb.product.milkEggs:
