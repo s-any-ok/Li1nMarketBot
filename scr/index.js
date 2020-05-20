@@ -79,16 +79,16 @@ bot.on('message', msg => {
       break;
 
     case kb.product.fruit_vegetables:
-      sendProductsByQuery(chatId, { type: 'fruit_vegetables' });
+      sendProductsByQuery(chatId, { type: 'fruitVegetables' });
       break;
     case kb.product.milk_eggs:
-      sendProductsByQuery(chatId, { type: 'milk_eggs' });
+      sendProductsByQuery(chatId, { type: 'milkEggs' });
       break;
     case kb.product.meat_fish_poultry:
-      sendProductsByQuery(chatId, { type: 'meat_fish_poultry' });
+      sendProductsByQuery(chatId, { type: 'meatFishPoultry' });
       break;
     case kb.product.sausage_cheese:
-      sendProductsByQuery(chatId, { type: 'sausage_cheese' });
+      sendProductsByQuery(chatId, { type: 'sausageCheese' });
       break;
     case kb.product.water:
       sendProductsByQuery(chatId, { type: 'water' });
@@ -120,8 +120,7 @@ bot.onText(/\/start/, msg => {
 
   const chatId = helpers.getChatId(msg);
 
-  const text = `✋ Вітаю, ${msg.from.first_name}
-  Виберіть команду для початку роботи!`;
+  const text = `✋ Вітаю, ${msg.from.first_name}\nВиберіть команду для початку роботи!`;
 
   bot.sendMessage(chatId, text, {
     reply_markup: {
@@ -139,9 +138,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
     User.findOne({ telegramId: msg.from.id }),
   ])
     .then(([product, user]) => {
-      const caption = `${product.name} - ${product.amount}\n
-      🏷️ Ціна: ${product.price} грн.\n
-      🔥 Акційний термін:\n${product.data}`;
+      const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Акційний термін:\n${product.data}`;
 
       let isFavourite = false;
 
@@ -253,8 +250,7 @@ function sendHtml(chatId, html, keyboardName = null) {
 function sendProductsByQuery(chatId, query) {
   Product.find(query).then(products => {
 
-    const html = products.map((p, i) => `<b>${i + 1})</b> ${p.name}
-    🏬 ${p.shop}\n🆔 /p${p.uuid}\n`).join('\n');
+    const html = products.map((p, i) => `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`).join('\n');
 
     sendHtml(chatId, html, 'products');
 
@@ -317,8 +313,7 @@ function showFavouriteProducts(chatId, telegramId) {
           let html;
           if (products.length) {
             products = _.sortBy(products, 'price');
-            html = products.map(p => `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>
-            🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`).join('\n');
+            html = products.map(p => `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>.\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`).join('\n');
             html = `🛍️ <b>Ваші продукти:</b>\n\n${html}`;
           } else {
             html = 'Ви ще нічого не додали';
