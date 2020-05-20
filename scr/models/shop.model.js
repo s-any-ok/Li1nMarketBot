@@ -1,10 +1,12 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+'use strict';
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const ShopSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   uuid: {
     type: String,
@@ -12,15 +14,15 @@ const ShopSchema = new Schema({
   },
   url: {
     type: String,
-    required: true
+    required: true,
   },
   location: {
-    type: Schema.Types.Mixed
+    type: Schema.Types.Mixed,
   },
   products: {
     type: [String],
-    default: []
-  }
-})
+    default: [],
+  },
+});
 
-mongoose.model('shops', ShopSchema)
+mongoose.model('shops', ShopSchema);

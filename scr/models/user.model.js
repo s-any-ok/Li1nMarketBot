@@ -1,16 +1,18 @@
-const mongoose = require('mongoose')
+'use strict';
 
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   telegramId: {
     type: Number,
-    required: true
+    required: true,
   },
   products: {
     type: [String],
-    default: []
-  }
-})
+    default: [],
+  },
+});
 
-mongoose.model('users', UserSchema)
+mongoose.model('users', UserSchema);
