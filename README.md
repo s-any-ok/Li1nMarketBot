@@ -30,4 +30,6 @@ This is a Telegram bot, which can find information about promotional goods in yo
 
 ## License
 
+![GitHub](https://img.shields.io/github/license/mezgoodle/weather-bot)
+
 MIT © [OleksandrLevak](https://github.com/OleksandrLevak)
