@@ -138,7 +138,8 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
     User.findOne({ telegramId: msg.from.id }),
   ])
     .then(([product, user]) => {
-      const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Акційний термін:\n${product.data}`;
+      const info = helpers
+        .getInfoOfProduct(product.name, product.amount, product.price, product.data);
 
       let isFavourite = false;
 
@@ -146,11 +147,13 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
         isFavourite = user.products.indexOf(product.uuid) !== -1;
       }
 
-      const favouriteText = isFavourite ? 'Видалити з кошика' : 'Додати в кошик';
+      const favouriteText = isFavourite ?
+        'Видалити з кошика' :
+        'Додати в кошик';
 
 
       bot.sendPhoto(chatId, product.picture, {
-        caption,
+        info,
         reply_markup: {
           inline_keyboard: [
             [{
@@ -250,7 +253,8 @@ function sendHtml(chatId, html, keyboardName = null) {
 function sendProductsByQuery(chatId, query) {
   Product.find(query).then(products => {
 
-    const html = products.map((p, i) => `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`).join('\n');
+    const html = products.map((p, i) =>
+      `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`).join('\n');
 
     sendHtml(chatId, html, 'products');
 
@@ -267,7 +271,9 @@ function sendShopsInCords(chatId, location) {
 
     shops = _.sortBy(shops, 'distance');
 
-    const html = shops.map((s, i) => `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.🆔 /s${s.uuid}`).join('\n\n');
+    const html = shops.map((s, i) =>
+      `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.🆔 /s${s.uuid}`)
+      .join('\n\n');
 
     sendHtml(chatId, html, 'shops');
   });
@@ -292,7 +298,9 @@ function toggleFavouriteProducts(userId, queryId, { productUuid, isFav }) {
         });
       }
 
-      const answerText = isFav ? `Видалено з кошика` : `Продукт додано до кошика`;
+      const answerText = isFav ?
+        `Видалено з кошика` :
+        `Продукт додано до кошика`;
 
       userPromise.save()
         .then(_ => {
@@ -313,7 +321,11 @@ function showFavouriteProducts(chatId, telegramId) {
           let html;
           if (products.length) {
             products = _.sortBy(products, 'price');
-            html = products.map(p => `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`).join('\n');
+
+            html = products.map(p =>
+              `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`)
+              .join('\n');
+
             html = `🛍️ <b>Ваші продукти:</b>\n\n${html}`;
           } else {
             html = 'Ви ще нічого не додали';
