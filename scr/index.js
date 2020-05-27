@@ -271,8 +271,9 @@ function sendShopsInCords(chatId, location) {
 
     shops = _.sortBy(shops, 'distance');
 
-    const html = shops.map((s, i) =>
-      `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.🆔 /s${s.uuid}`)
+    const html = shops
+      .map((s, i) =>
+        `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.🆔 /s${s.uuid}`)
       .join('\n\n');
 
     sendHtml(chatId, html, 'shops');
