@@ -138,8 +138,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
     User.findOne({ telegramId: msg.from.id }),
   ])
     .then(([product, user]) => {
-      const info = helpers
-        .getInfoOfProduct(product.name, product.amount, product.price, product.data);
+      const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Акційний термін:\n${product.data}`;
 
       let isFavourite = false;
 
@@ -153,7 +152,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
 
 
       bot.sendPhoto(chatId, product.picture, {
-        info,
+        caption,
         reply_markup: {
           inline_keyboard: [
             [{
