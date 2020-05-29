@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = {
   home: {
     products: '🍪 Продукти',
