@@ -15,14 +15,14 @@ module.exports = {
 
       if (economy[0] !== 'Е') break;
 
-      const id = i / 7 + 1;
+      const uuid = i / 7 + 1;
       const name = promoInfo[i + 5];
       const discription = promoInfo[i + 6];
       const sale = promoInfo[i + 1];
       const price = parseInt(promoInfo[i + 2]) / 100;
       const oldPrice = parseFloat(promoInfo[i + 4]);
 
-      const product = makeProduct(id, name, discription, sale, price, oldPrice);
+      const product = makeProduct(uuid, name, discription, sale, price, oldPrice);
 
       products.push(product);
     }
@@ -46,6 +46,6 @@ module.exports = {
 
 };
 
-function makeProduct(id, name, discription, sale, price, oldPrice) {
-  return { id, name, discription, sale, price, oldPrice };
+function makeProduct(uuid, name, discription, sale, price, oldPrice) {
+  return { uuid, name, discription, sale, price, oldPrice };
 }

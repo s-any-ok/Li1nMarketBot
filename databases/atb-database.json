@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "uuid": 1,
       "name": "Тістечко бісквітне",
       "discription": "«Ведмедик Барні» з шоколадною/ молочною/ бананово-йогуртовою начинкою ТМ «Барні» - 150 г",
       "sale": "-38%",
@@ -11,7 +11,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 2,
+      "uuid": 2,
       "name": "Сир твердий",
       "discription": "«Канiвський», 50%/ «Голландський» брусковий, 45% ТМ «Канів 1971» - 160 г",
       "sale": "-38%",
@@ -21,7 +21,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 3,
+      "uuid": 3,
       "name": "Ковбаса",
       "discription": "«Шинкова», н/к ТМ «М'ясна лавка/Своя Лінія» - 500 г",
       "sale": "-37%",
@@ -31,7 +31,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 4,
+      "uuid": 4,
       "name": "Ковбаса",
       "discription": "«Тернопільська», с/в ТМ «М'ясна лавка/«Своя лінія» - 1 кг",
       "sale": "-34%",
@@ -41,7 +41,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 5,
+      "uuid": 5,
       "name": "Шоколад",
       "discription": "чорний/молочний з шоколадною начинкою та вафлею/молочний з молочною начинкою та печивом ТМ «Рошен» - 90/105/115 г",
       "sale": "-33%",
@@ -51,7 +51,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 6,
+      "uuid": 6,
       "name": "Квас",
       "discription": "«Білий»/«Чорний» ТМ «Тарас» - 1,5 л",
       "sale": "-32%",
@@ -61,7 +61,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 7,
+      "uuid": 7,
       "name": "Кава",
       "discription": "Blue Label розчинна сублімована ТМ «Ambassador» - 120 г",
       "sale": "-31%",
@@ -71,7 +71,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 8,
+      "uuid": 8,
       "name": "Кава",
       "discription": "Blue Label мелена ТМ «Ambassador» - 275 г",
       "sale": "-31%",
@@ -81,7 +81,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 9,
+      "uuid": 9,
       "name": "Шинка",
       "discription": "«Куряча» варена ТМ «Своя Лінія» - 500 г",
       "sale": "-30%",
@@ -91,7 +91,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 10,
+      "uuid": 10,
       "name": "Морозиво",
       "discription": "«Каштан», в асортименті ТМ «Розумний вибір» - 75 г",
       "sale": "-29%",
@@ -101,7 +101,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 11,
+      "uuid": 11,
       "name": "Печиво",
       "discription": "Hoppo Choc з шоколадною начинкою ТМ «Ozmo» - 90 г",
       "sale": "-28%",
@@ -111,7 +111,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 12,
+      "uuid": 12,
       "name": "Батончик вафельний",
       "discription": "«Хіп Хоп» з ароматом «Лісовий горіх»/у глазурі ТМ «Своя Лінія» - 300 г",
       "sale": "-27%",
@@ -121,7 +121,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 13,
+      "uuid": 13,
       "name": "Хлібці",
       "discription": "кукурудзяні з морською сіллю ТМ «Good Food» -130 г",
       "sale": "-26%",
@@ -131,7 +131,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 14,
+      "uuid": 14,
       "name": "Олiя",
       "discription": "De Luxe Foods&Goods Selected оливкова Extra Virgin ск/пл - 250 мл",
       "sale": "-25%",
@@ -141,7 +141,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 15,
+      "uuid": 15,
       "name": "Олiя",
       "discription": "De Luxe Foods&Goods Selected оливкова Extra Virgin ск/пл - 0,5 л",
       "sale": "-25%",
@@ -151,7 +151,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 16,
+      "uuid": 16,
       "name": "Олiя",
       "discription": "De Luxe Foods&Goods Selected оливкова Pure ск/пл - 250 мл",
       "sale": "-25%",
@@ -161,7 +161,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 17,
+      "uuid": 17,
       "name": "Олiя",
       "discription": "De Luxe Foods&Goods Selected оливкова Pure ск/пл - 0,5 л",
       "sale": "-25%",
@@ -171,7 +171,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 18,
+      "uuid": 18,
       "name": "Морозиво",
       "discription": "«Крем-пломбір» у вафельному стаканчику ТМ «Рудь» - 80 г",
       "sale": "-24%",
@@ -181,7 +181,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 19,
+      "uuid": 19,
       "name": "Закваска",
       "discription": "2,5 % ТМ «Яготинська» - 0,9 кг",
       "sale": "-21%",
@@ -191,7 +191,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 20,
+      "uuid": 20,
       "name": "Продукт сирний плавлений",
       "discription": "зі смаком грибів/«Дружба», 55% ТМ «Тульчинка» - 90 г",
       "sale": "-21%",
@@ -201,7 +201,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 21,
+      "uuid": 21,
       "name": "Напій",
       "discription": "Lemonata зі смаком Лимон-Огірок/ Грейпфрут-Базилік безалкогольний сильногазований ТМ «Lemonissimo» - 0,8 л",
       "sale": "-21%",
@@ -211,7 +211,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 22,
+      "uuid": 22,
       "name": "Пиво",
       "discription": "безалкогольное № 0 Грейпфрут ТМ «Бaлтикa» - 0,5 л",
       "sale": "-21%",
@@ -221,7 +221,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 23,
+      "uuid": 23,
       "name": "Виріб м'ясомісткій",
       "discription": "«Апетитна», варена ТМ «Розумний вибір» - 500 г",
       "sale": "-21%",
@@ -231,7 +231,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 24,
+      "uuid": 24,
       "name": "Сир кисломолочний",
       "discription": "«Творожна Традиція», 0,2% ТМ «President» - 350 г",
       "sale": "-20%",
@@ -241,7 +241,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 25,
+      "uuid": 25,
       "name": "Крильця",
       "discription": "асорті ТМ «Бащинский» - 1 кг",
       "sale": "-20%",
@@ -251,7 +251,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 26,
+      "uuid": 26,
       "name": "Закуска",
       "discription": "«По-домашньому» ТМ «М'ясна лавка» - 150 г",
       "sale": "-20%",
@@ -261,7 +261,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 27,
+      "uuid": 27,
       "name": "Пельмені",
       "discription": "«Мішутка» з м'ясом індички ТМ «Три Ведмеді» - 0,65 кг",
       "sale": "-20%",
@@ -271,7 +271,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 28,
+      "uuid": 28,
       "name": "Консерви",
       "discription": "Салат з тунця «Середземноморський стиль»/ «Мексиканський стиль» ТМ «John West» - 220 г",
       "sale": "-20%",
@@ -281,7 +281,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 29,
+      "uuid": 29,
       "name": "Пресерви",
       "discription": "мідії Преміум варені в олії ТМ «Айсберг» - 150 г",
       "sale": "-20%",
@@ -291,7 +291,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 30,
+      "uuid": 30,
       "name": "Крабові палички",
       "discription": "заморожені ТМ «Vici» - 500 г",
       "sale": "-20%",
@@ -301,7 +301,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 31,
+      "uuid": 31,
       "name": "Шоколад",
       "discription": "Milkiniss молочний з молочною начинкою ТМ «Milka» - 87.5 г",
       "sale": "-20%",
@@ -311,7 +311,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 32,
+      "uuid": 32,
       "name": "Готовий сніданок",
       "discription": "LION з карамеллю та шоколадом ТМ «Nestle» - 250 г",
       "sale": "-20%",
@@ -321,7 +321,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 33,
+      "uuid": 33,
       "name": "Арахіс",
       "discription": "смажений, солоний/ зі смаком сиру ТМ «Своя Лінія» - 120 г",
       "sale": "-20%",
@@ -331,7 +331,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 34,
+      "uuid": 34,
       "name": "Путасу",
       "discription": "з перцем, сушена, солона ТМ «Своя Лінія» - 36 г",
       "sale": "-20%",
@@ -341,7 +341,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 35,
+      "uuid": 35,
       "name": "Анчоус",
       "discription": "сушений солоний ТМ «Своя Лінія» - 36 г",
       "sale": "-20%",
@@ -351,7 +351,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 36,
+      "uuid": 36,
       "name": "Насіння соняшника",
       "discription": "несолоне/ підсолене обсмажене ТМ «Розумний вибір» - 135 г",
       "sale": "-20%",
@@ -361,7 +361,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 37,
+      "uuid": 37,
       "name": "Набір чаю",
       "discription": "ТМ «Tess» - 10 ф/п ×3",
       "sale": "-20%",
@@ -371,7 +371,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 38,
+      "uuid": 38,
       "name": "Чай",
       "discription": "Buket, зелений, листовий ТМ «Azercay» - 100 г",
       "sale": "-20%",
@@ -381,7 +381,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 39,
+      "uuid": 39,
       "name": "Майонез",
       "discription": "«Справжній», 67% ТМ «Своя Лінія» - 0,58 кг",
       "sale": "-19%",
@@ -391,7 +391,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 40,
+      "uuid": 40,
       "name": "Консерви",
       "discription": "Сардина атлантична натуральна з добавленням олії ТМ «Своя Лінія» - 240 г",
       "sale": "-19%",
@@ -401,7 +401,7 @@
       "shopUrl": "https://www.atbmarket.com/"
     },
     {
-      "id": 41,
+      "uuid": 41,
       "name": "Десерт сирковий",
       "discription": "з наповнювачем Лісові ягоди/ Кокос ТМ «Like» - 50 г",
       "sale": "-19%",
