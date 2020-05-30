@@ -9,7 +9,7 @@ const config = require('./config');
 const helpers = require('./helpers');
 const kb = require('./button');
 const keyboard = require('./keyboard');
-//const database = require('../database.json');
+//const database = require('../databases/atb-database.json');
 
 const options = {
   webHook: { port: process.env.PORT },

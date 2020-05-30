@@ -29,7 +29,7 @@ needle.get(economyUrl, (error, res) => {
   const productsFullInfo = functions.createProductsFullInfo(allProductsInfo, productsImgs);
 
   const jsonData = functions.serializeInfoTojson(productsFullInfo);
-  const jsonFile = './atb-database.json';
+  const jsonFile = '../databases/atb-database.json';
   fs.writeFile(jsonFile, jsonData, () => {
     console.log('Saved ' + jsonFile);
   });
