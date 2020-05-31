@@ -10,7 +10,7 @@ const helpers = require('./helpers');
 const kb = require('./button');
 const keyboard = require('./keyboard');
 //const database = require('../databases/database.json');
-//const atbDatabase = require('../databases/atb-database.json');
+const atbDatabase = require('../databases/atb-database.json');
 
 const options = {
   webHook: { port: process.env.PORT },
@@ -43,7 +43,7 @@ const Shop = mongoose.model('shops');
 const User = mongoose.model('users');
 
 //database.products.forEach(p => new Product(p).save());
-//atbDatabase.atbProducts.forEach(p => new AtbProduct(p).save());
+atbDatabase.atbProducts.forEach(p => new AtbProduct(p).save());
 
 bot.on('message', msg => {
 
