@@ -11,7 +11,8 @@ This is a Telegram bot, which can find information about promotional goods in yo
 - Add items to cart
 - Find the shops closest to the user
 
->The work uses artificially created database of stores
+> The work uses artificially created database of stores
+> Use a command `/atb` to see products with real discounts in АТБ 
 
 ## Tech framework used
 
@@ -21,6 +22,9 @@ This is a Telegram bot, which can find information about promotional goods in yo
  - [geolib](https://github.com/manuelbieh/geolib#readme)
  - [lodash](https://github.com/lodash/lodash)
  - [mongoose](https://github.com/Automattic/mongoose)
+ - [cheerio](https://github.com/cheeriojs/cheerio)
+ - [needle](https://github.com/tomas/needle)
+ - [json-beautify](https://github.com/gre/json-beautify)
  
  ## Contact
 
