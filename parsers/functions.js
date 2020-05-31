@@ -19,8 +19,8 @@ module.exports = {
       const name = promoInfo[i + 5];
       const discription = promoInfo[i + 6];
       const sale = promoInfo[i + 1];
-      const price = parseInt(promoInfo[i + 2]) / 100;
-      const oldPrice = parseFloat(promoInfo[i + 4]);
+      const price = +promoInfo[i + 2] / 100;
+      const oldPrice = +promoInfo[i + 4];
 
       const product = makeProduct(uuid, name, discription, sale, price, oldPrice);
 

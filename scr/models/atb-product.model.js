@@ -24,7 +24,7 @@ const AtbProductSchema = new Schema({
     type: Number,
   },
   oldPrice: {
-    type: Float32Array,
+    type: Number,
   },
   imgUrl: {
     type: String,
