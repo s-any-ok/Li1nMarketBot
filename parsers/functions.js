@@ -15,7 +15,7 @@ module.exports = {
 
       if (economy[0] !== 'Е') break;
 
-      const idNum = i / 7 + 1;
+      const idNum = i / 7 + 100;
 
       const uuid = createUuid('a', idNum);
       const name = promoInfo[i + 5];
@@ -51,6 +51,6 @@ function makeProduct(uuid, name, discription, sale, price, oldPrice, shop) {
   return { uuid, name, discription, sale, price, oldPrice, shop };
 }
 
-function createUuid(firstLetter, num) {
-  return firstLetter + num;
+function createUuid(word, num) {
+  return word + num;
 }
