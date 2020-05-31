@@ -34,4 +34,4 @@ const AtbProductSchema = new Schema({
   },
 });
 
-mongoose.model('atb-products', AtbProductSchema);
+mongoose.model('atbProducts', AtbProductSchema);

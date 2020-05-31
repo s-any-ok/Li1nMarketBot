@@ -37,13 +37,13 @@ require('./models/product.model');
 require('./models/shop.model');
 require('./models/user.model');
 
-const AtbProduct = mongoose.model('atb-products');
+const AtbProduct = mongoose.model('atbProducts');
 const Product = mongoose.model('products');
 const Shop = mongoose.model('shops');
 const User = mongoose.model('users');
 
 //database.products.forEach(p => new Product(p).save());
-atbDatabase.products.forEach(p => new AtbProduct(p).save());
+atbDatabase.atbProducts.forEach(p => new AtbProduct(p).save());
 
 bot.on('message', msg => {
 
