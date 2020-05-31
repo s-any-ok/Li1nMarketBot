@@ -143,8 +143,31 @@ bot.onText(/\/atb/, msg => {
     sendHtml(chatId, html, 'products');
 
   });
-
 });
+
+bot.onText(/\/p(.+)/, (msg, [source, match]) => {
+  const productUuid = helpers.getItemUuid(source);
+  const chatId = helpers.getChatId(msg);
+
+  AtbProduct.findOne({ uuid: productUuid })
+    .then((product => {
+      const caption = `${product.name}\n${product.discription}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Знижка:\n${product.sale}`;
+
+      bot.sendPhoto(chatId, product.imgUrl, {
+        caption,
+        reply_markup: {
+          inline_keyboard: [
+            [{
+              text: product.shop,
+              url: product.shopUrl,
+            }],
+          ],
+        },
+      });
+    });
+});
+
+
 bot.onText(/\/p(.+)/, (msg, [source, match]) => {
   const productUuid = helpers.getItemUuid(source);
   const chatId = helpers.getChatId(msg);
