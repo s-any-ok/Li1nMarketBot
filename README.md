@@ -1,7 +1,5 @@
 # Li1nMarketBot 
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d2d81a02238e4fbda0de0058ad9edd63)](https://app.codacy.com/manual/s-any-ok/Li1nMarketBot?utm_source=github.com&utm_medium=referral&utm_content=s-any-ok/Li1nMarketBot&utm_campaign=Badge_Grade_Dashboard)
-
 This is a Telegram bot, which can find information about promotional goods in your local shops. Built on Node.js.
 
 >[bot link](https://t.me/Li1nMarketBot)
@@ -28,6 +26,9 @@ This is a Telegram bot, which can find information about promotional goods in yo
  - [cheerio](https://github.com/cheeriojs/cheerio)
  - [needle](https://github.com/tomas/needle)
  - [json-beautify](https://github.com/gre/json-beautify)
+ 
+ ## Code style
+ [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d2d81a02238e4fbda0de0058ad9edd63)](https://app.codacy.com/manual/s-any-ok/Li1nMarketBot?utm_source=github.com&utm_medium=referral&utm_content=s-any-ok/Li1nMarketBot&utm_campaign=Badge_Grade_Dashboard)
  
  ## Contact
 
