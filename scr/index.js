@@ -150,7 +150,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
   const chatId = helpers.getChatId(msg);
 
   AtbProduct.findOne({ uuid: productUuid })
-    .then((product => {
+    .then(product => {
       const caption = `${product.name}\n${product.discription}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Знижка:\n${product.sale}`;
 
       bot.sendPhoto(chatId, product.imgUrl, {
