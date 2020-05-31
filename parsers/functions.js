@@ -15,7 +15,7 @@ module.exports = {
 
       if (economy[0] !== 'Е') break;
 
-      const uuid = i / 7 + 1;
+      const uuid = i / 7;
       const name = promoInfo[i + 5];
       const discription = promoInfo[i + 6];
       const sale = promoInfo[i + 1];
