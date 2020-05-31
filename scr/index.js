@@ -9,7 +9,8 @@ const config = require('./config');
 const helpers = require('./helpers');
 const kb = require('./button');
 const keyboard = require('./keyboard');
-//const database = require('../databases/atb-database.json');
+//const database = require('../databases/database.json');
+const atbDatabase = require('../databases/atb-database.json');
 
 const options = {
   webHook: { port: process.env.PORT },
@@ -31,17 +32,18 @@ const ACTION_TYPE = {
   PROD_TOGGLE_FAV: 'ptf',
 };
 
-
+require('./models/atb-product.model');
 require('./models/product.model');
 require('./models/shop.model');
 require('./models/user.model');
 
+const AtbProduct = mongoose.model('atb-products');
 const Product = mongoose.model('products');
 const Shop = mongoose.model('shops');
 const User = mongoose.model('users');
 
 //database.products.forEach(p => new Product(p).save());
-//database.shops.forEach(s => new Shop(s).save());
+atbDatabase.products.forEach(p => new AtbProduct(p).save());
 
 bot.on('message', msg => {
 
