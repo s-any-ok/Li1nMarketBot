@@ -39,7 +39,7 @@ module.exports = {
   },
 
   serializeInfoTojson(productsFullInfo) {
-    const typeOfItems = 'products';
+    const typeOfItems = 'atb-products';
     const objectForDatabase = { [typeOfItems]: productsFullInfo };
     return jsonBeautify(objectForDatabase, null, 2, 80);
   },
