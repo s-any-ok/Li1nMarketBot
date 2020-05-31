@@ -12,6 +12,7 @@ This is a Telegram bot, which can find information about promotional goods in yo
 - Find the shops closest to the user
 
 > The work uses artificially created database of stores
+
 > Use a command `/atb` to see products with real discounts in АТБ 
 
 ## Tech framework used
