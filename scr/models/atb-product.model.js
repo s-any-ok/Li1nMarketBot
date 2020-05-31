@@ -32,6 +32,9 @@ const AtbProductSchema = new Schema({
   shopUrl: {
     type: String,
   },
+  shop: {
+    type: String,
+  },
 });
 
 mongoose.model('atbProducts', AtbProductSchema);

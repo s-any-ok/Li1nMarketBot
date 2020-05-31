@@ -6,7 +6,7 @@ module.exports = {
   getPromoInfo(promoText) {
     return promoText.split`\n`.map(w => w.trim()).filter(n => n);
   },
-  getProductsObj(promoInfo) {
+  getProductsObj(promoInfo, shop) {
     const products = [];
 
     for (let i = 0; i < promoInfo.length; i += 7) {
@@ -15,14 +15,16 @@ module.exports = {
 
       if (economy[0] !== 'Е') break;
 
-      const uuid = i / 7;
+      const idNum = i / 7 + 1;
+
+      const uuid = createUuid('a', idNum);
       const name = promoInfo[i + 5];
       const discription = promoInfo[i + 6];
       const sale = promoInfo[i + 1];
       const price = +promoInfo[i + 2] / 100;
       const oldPrice = +promoInfo[i + 4];
 
-      const product = makeProduct(uuid, name, discription, sale, price, oldPrice);
+      const product = makeProduct(uuid, name, discription, sale, price, oldPrice, shop);
 
       products.push(product);
     }
@@ -38,14 +40,17 @@ module.exports = {
     return productsFullInfo;
   },
 
-  serializeInfoTojson(productsFullInfo) {
-    const typeOfItems = 'atbProducts';
+  serializeInfoTojson(productsFullInfo, typeOfItems) {
     const objectForDatabase = { [typeOfItems]: productsFullInfo };
     return jsonBeautify(objectForDatabase, null, 2, 80);
   },
 
 };
 
-function makeProduct(uuid, name, discription, sale, price, oldPrice) {
-  return { uuid, name, discription, sale, price, oldPrice };
+function makeProduct(uuid, name, discription, sale, price, oldPrice, shop) {
+  return { uuid, name, discription, sale, price, oldPrice, shop };
+}
+
+function createUuid(firstLetter, num) {
+  return firstLetter + num;
 }
