@@ -151,7 +151,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
 
   AtbProduct.findOne({ uuid: productUuid })
     .then(product => {
-      const caption = `${product.name}\n${product.discription}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Знижка:\n${product.sale}`;
+      const caption = `${product.name}\n${product.discription}\n\n❌ Стара ціна: ${product.oldPrice} грн.\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Знижка: ${product.sale}`;
 
       bot.sendPhoto(chatId, product.imgUrl, {
         caption,
