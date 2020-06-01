@@ -37,4 +37,4 @@ const AtbProductSchema = new Schema({
   },
 });
 
-mongoose.model('atbProducts', AtbProductSchema);
+module.exports = mongoose.model('atbProducts', AtbProductSchema);
