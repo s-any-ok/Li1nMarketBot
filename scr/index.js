@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 'use strict';
 
+require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const geolib = require('geolib');
 const _ = require('lodash');
 const mongoose = require('mongoose');
-const config = require('./config');
 const helpers = require('./helpers');
 const kb = require('./button');
 const keyboard = require('./keyboard');
@@ -17,12 +17,12 @@ const options = {
 };
 
 const url = process.env.APP_URL || 'https://li1n-market-bot.herokuapp.com:443';
-const bot = new TelegramBot(config.TOKEN, options);
-bot.setWebHook(`${url}/bot${config.TOKEN}`);
+const bot = new TelegramBot(process.env.TOKEN, options);
+bot.setWebHook(`${url}/bot${process.env.TOKEN}`);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(config.DB_URL, {
+mongoose.connect(process.env.DB_URL, {
   useMongoClient: true,
 });
 
