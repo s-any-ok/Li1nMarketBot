@@ -117,10 +117,11 @@ bot.on('message', msg => {
 bot.onText(/\/start/, msg => {
 
   const chatId = helpers.getChatId(msg);
+  const userName = msg.from.first_name;
 
-  const text = `✋ Вітаю, ${msg.from.first_name}\nВиберіть команду для початку роботи!`;
+  const hello = captions.welcome(userName);
 
-  bot.sendMessage(chatId, text, {
+  bot.sendMessage(chatId, hello, {
     reply_markup: {
       keyboard: keyboard.home,
     },
@@ -133,8 +134,7 @@ bot.onText(/\/atb/, msg => {
 
   AtbProduct.find({}).then(products => {
 
-    const html = products.map((p, i) =>
-      `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`).join('\n');
+    const html = captions.allAtbProducts(products);
 
     sendHtml(chatId, html, 'products');
 
@@ -288,8 +288,7 @@ function sendHtml(chatId, html, keyboardName = null) {
 function sendProductsByQuery(chatId, query) {
   Product.find(query).then(products => {
 
-    const html = products.map((p, i) =>
-      `<b>${i + 1})</b> ${p.name}\n🏬 ${p.shop}\n🆔 /p${p.uuid}\n`).join('\n');
+    const html = captions.productsByQuery(products);
 
     sendHtml(chatId, html, 'products');
 
@@ -306,10 +305,7 @@ function sendShopsInCords(chatId, location) {
 
     shops = _.sortBy(shops, 'distance');
 
-    const html = shops
-      .map((s, i) =>
-        `<b>${i + 1}.</b> ${s.name}. <em>Відстань</em> - <strong>${s.distance}</strong> км.🆔 /s${s.uuid}`)
-      .join('\n\n');
+    const html = captions.shopsInCoords(shops);
 
     sendHtml(chatId, html, 'shops');
   });
@@ -358,9 +354,7 @@ function showFavouriteProducts(chatId, telegramId) {
           if (products.length) {
             products = _.sortBy(products, 'price');
 
-            html = products.map(p =>
-              `✅  ${p.name}\n🏷️ <b>${p.price} грн.</b>\n🏬 <b>${p.shop}</b>\n🆔 (/p${p.uuid})\n`)
-              .join('\n');
+            html = captions.favouriteProducts(products);
 
             html = `🛍️ <b>Ваші продукти:</b>\n\n${html}`;
           } else {
