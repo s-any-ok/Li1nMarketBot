@@ -144,67 +144,68 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
   const productUuid = helpers.getItemUuid(source);
   const chatId = helpers.getChatId(msg);
 
-  AtbProduct.findOne({ uuid: productUuid })
-    .then(product => {
-      const caption = `${product.name}\n${product.discription}\n\n❌ Стара ціна: ${product.oldPrice} грн.\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Знижка: ${product.sale}`;
+  const atbMarker = 'a';
 
-      bot.sendPhoto(chatId, product.imgUrl, {
-        caption,
-        reply_markup: {
-          inline_keyboard: [
-            [{
-              text: product.shop,
-              url: product.shopUrl,
-            }],
-          ],
-        },
+  if (productUuid[0] === atbMarker) {
+
+    AtbProduct.findOne({ uuid: productUuid })
+      .then(product => {
+        const caption = `${product.name}\n${product.discription}\n\n❌ Стара ціна: ${product.oldPrice} грн.\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Знижка: ${product.sale}`;
+
+        bot.sendPhoto(chatId, product.imgUrl, {
+          caption,
+          reply_markup: {
+            inline_keyboard: [
+              [{
+                text: product.shop,
+                url: product.shopUrl,
+              }],
+            ],
+          },
+        });
       });
-    });
-});
+
+  } else {
+
+    Promise.all([
+      Product.findOne({ uuid: productUuid }),
+      User.findOne({ telegramId: msg.from.id }),
+    ])
+      .then(([product, user]) => {
+        const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Акційний термін:\n${product.data}`;
+
+        let isFavourite = false;
+
+        if (user) {
+          isFavourite = user.products.indexOf(product.uuid) !== -1;
+        }
+
+        const favouriteText = isFavourite ?
+          'Видалити з кошика' :
+          'Додати в кошик';
 
 
-bot.onText(/\/p(.+)/, (msg, [source, match]) => {
-  const productUuid = helpers.getItemUuid(source);
-  const chatId = helpers.getChatId(msg);
-
-  Promise.all([
-    Product.findOne({ uuid: productUuid }),
-    User.findOne({ telegramId: msg.from.id }),
-  ])
-    .then(([product, user]) => {
-      const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Акційний термін:\n${product.data}`;
-
-      let isFavourite = false;
-
-      if (user) {
-        isFavourite = user.products.indexOf(product.uuid) !== -1;
-      }
-
-      const favouriteText = isFavourite ?
-        'Видалити з кошика' :
-        'Додати в кошик';
-
-
-      bot.sendPhoto(chatId, product.picture, {
-        caption,
-        reply_markup: {
-          inline_keyboard: [
-            [{
-              text: favouriteText,
-              callback_data: JSON.stringify({
-                type: ACTION_TYPE.PROD_TOGGLE_FAV,
-                productUuid: product.uuid,
-                isFav: isFavourite,
-              }),
-            }],
-            [{
-              text: product.shop,
-              url: product.link,
-            }],
-          ],
-        },
+        bot.sendPhoto(chatId, product.picture, {
+          caption,
+          reply_markup: {
+            inline_keyboard: [
+              [{
+                text: favouriteText,
+                callback_data: JSON.stringify({
+                  type: ACTION_TYPE.PROD_TOGGLE_FAV,
+                  productUuid: product.uuid,
+                  isFav: isFavourite,
+                }),
+              }],
+              [{
+                text: product.shop,
+                url: product.link,
+              }],
+            ],
+          },
+        });
       });
-    });
+  }
 });
 
 bot.onText(/\/s(.+)/, (msg, [source, match]) => {
