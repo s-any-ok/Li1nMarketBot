@@ -7,6 +7,7 @@ const geolib = require('geolib');
 const _ = require('lodash');
 const mongoose = require('mongoose');
 const helpers = require('./helpers');
+const captions = require('./captions');
 const kb = require('./button');
 const keyboard = require('./keyboard');
 //const database = require('../databases/database.json');
@@ -150,7 +151,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
 
     AtbProduct.findOne({ uuid: productUuid })
       .then(product => {
-        const caption = `${product.name}\n${product.discription}\n\n❌ Стара ціна: ${product.oldPrice} грн.\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Знижка: ${product.sale}`;
+        const caption = captions.atbProducts(product.name, product.discription, product.oldPrice, product.price, product.sale);
 
         bot.sendPhoto(chatId, product.imgUrl, {
           caption,
@@ -172,7 +173,7 @@ bot.onText(/\/p(.+)/, (msg, [source, match]) => {
       User.findOne({ telegramId: msg.from.id }),
     ])
       .then(([product, user]) => {
-        const caption = `${product.name} - ${product.amount}\n\n🏷️ Ціна: ${product.price} грн.\n\n🔥 Акційний термін:\n${product.data}`;
+        const caption = captions.shopsProducts(product.name, product.amount, product.price, product.data);
 
         let isFavourite = false;
 
