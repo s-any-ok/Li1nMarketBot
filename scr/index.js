@@ -17,9 +17,8 @@ const options = {
   webHook: { port: process.env.PORT },
 };
 
-const url = process.env.APP_URL || 'https://li1n-market-bot.herokuapp.com:443';
 const bot = new TelegramBot(process.env.TOKEN, options);
-bot.setWebHook(`${url}/bot${process.env.TOKEN}`);
+bot.setWebHook(`${process.env.APP_URL}/bot${process.env.TOKEN}`);
 
 mongoose.Promise = global.Promise;
 
