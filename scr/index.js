@@ -22,7 +22,7 @@ bot.setWebHook(`${process.env.APP_URL}/bot${process.env.TOKEN}`);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.DB_URL, {
   useMongoClient: true,
 });
 
