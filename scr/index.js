@@ -19,8 +19,6 @@ const options = {
 const bot = new TelegramBot(process.env.TOKEN, options);
 bot.setWebHook(`${process.env.APP_URL}/bot${process.env.TOKEN}`);
 
-mongoose.Promise = global.Promise;
-
 mongoose.connect(process.env.DB_URL, {
   useMongoClient: true,
 });
