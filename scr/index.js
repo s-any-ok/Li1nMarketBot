@@ -350,7 +350,7 @@ function showFavouriteProducts(chatId, telegramId) {
         Product.find({ uuid: { '$in': user.products } }).then(products => {
           let html;
           if (products.length) {
-            products = _.sortBy(products, 'price');
+            products = products.sort(helpers.byField('price'));
 
             html = captions.favouriteProducts(products);
 
