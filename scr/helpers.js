@@ -9,4 +9,9 @@ module.exports = {
     return source.substr(2, source.length);
   },
 
+  byField(field) {
+    return (a, b) =>
+      (a[field] > b[field] ? 1 : -1);
+  },
+
 };

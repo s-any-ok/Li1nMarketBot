@@ -1,7 +1,5 @@
 'use strict';
 
-const jsonBeautify = require('json-beautify');
-
 module.exports = {
   getPromoInfo(promoText) {
     return promoText.split`\n`.map(w => w.trim()).filter(n => n);
@@ -42,7 +40,7 @@ module.exports = {
 
   serializeInfoTojson(productsFullInfo, typeOfItems) {
     const objectForDatabase = { [typeOfItems]: productsFullInfo };
-    return jsonBeautify(objectForDatabase, null, 2, 80);
+    return JSON.stringify(objectForDatabase, null, 2);
   },
 
 };

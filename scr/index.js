@@ -4,7 +4,6 @@
 require('dotenv').config();
 const TelegramBot = require('node-telegram-bot-api');
 const geolib = require('geolib');
-const _ = require('lodash');
 const mongoose = require('mongoose');
 const helpers = require('./helpers');
 const captions = require('./captions');
@@ -302,7 +301,7 @@ function sendShopsInCords(chatId, location) {
       s.distance = geolib.getDistance(location, s.location) / 1000;
     });
 
-    shops = _.sortBy(shops, 'distance');
+    shops = shops.sort(helpers.byField('distance'));
 
     const html = captions.shopsInCoords(shops);
 

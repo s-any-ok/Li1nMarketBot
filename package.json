@@ -17,8 +17,6 @@
         "dotenv": "^8.2.0",
         "fs": "0.0.1-security",
         "geolib": "^3.2.1",
-        "json-beautify": "^1.1.1",
-        "lodash": "^4.17.15",
         "mongoose": "^5.9.11",
         "needle": "^2.5.0",
         "node-telegram-bot-api": "^0.40.0"
